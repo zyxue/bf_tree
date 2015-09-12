@@ -1,9 +1,11 @@
 from __future__ import print_function
 
+import os
+import time
 import sqlite3
 import gzip
 import threading
-import Queue
+from multiprocessing import Queue, Process
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s|%(levelname)s|%(message)s')
 
@@ -16,14 +18,15 @@ from objs import BloomFilterBuilder
 
 PROB = 1e-9
 K_MER_SIZE = 20
-NUM_WORKER_THREADS = 32         # given 32 cores
+NUM_CPUS = 32         # given 32 cores
 
 def generate_bf_seqs():
     """generate subarray of sequences needed to create a bloomfilter"""
-    df = pd.read_csv('/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz',
-                     compression='gzip', nrows=50)
-                     # compression='gzip')
-
+    input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
+    logging.info('reading {0}'.format(input_))
+    df = pd.read_csv(input_, compression='gzip')
+    # df = pd.read_csv(input_, compression='gzip', nrows=50)
+    logging.info('reading Done')
 
     seqs = df.seq.values
     logging.info('Given {0} sequences: about 2x bloomfilters will be '
@@ -73,7 +76,7 @@ def calc_fp(m ,h, n):
     """
     return (1 - (1 - 1 / m) ** (h * n)) ** h
 
-@timeit
+# @timeit
 def generate_bf(id_seqs):
     if len(id_seqs) == 1:
         seq_id = id_seqs[0][0]
@@ -106,12 +109,39 @@ def generate_bf(id_seqs):
     return bf_builder.bit_array, seq_id
 
 
-def worker(queue, res_queue):
+def worker(queue, db_count):
+    logging.info('connecting to db...')
+    output_db = "db/{0}.db".format(db_count)
+    if output_db:
+        os.remove(output_db)
+    conn = sqlite3.connect(output_db)
+    cursor = conn.cursor()
+
+    # cursor.execute("CREATE TABLE bloomfilter (bf_id INTEGER PRIMARY KEY, bitarray BLOB, FOREIGN KEY(seq_id) REFERENCES seq(id))")
+    cursor.execute("CREATE TABLE bloomfilter (bf_id INTEGER PRIMARY KEY, bitarray BLOB, seq_id)")
+
+    counter = 0
     while True:
         bf_id, id_seqs = queue.get()
         bf, seq_id = generate_bf(id_seqs)
-        res_queue.put((bf_id, bf, seq_id))
-        queue.task_done()
+        if seq_id:
+            cursor.execute("INSERT INTO bloomfilter values (?, ?, ?)",
+                           (bf_id, sqlite3.Binary(bf.tobytes()), seq_id))
+        else:
+            cursor.execute("INSERT INTO bloomfilter values (?, ?, ?)",
+                           (bf_id, sqlite3.Binary(bf.tobytes()), None))
+        counter += 1
+        if counter % 500 == 0:
+            logging.info("commit {0} executions".format(counter))
+            conn.commit()
+
+        if queue.empty():
+            logging.info('db_count: {0}: waiting 5s for queue to be non-empty'.format(db_count))
+            time.sleep(5)
+            if queue.empty():   # still empty
+                logging.info('db_count: {0}: waiting 5s for queue to be non-empty'.format(db_count))
+                break
+    conn.commit()               # commit remaining execution
 
 
 @timeit
@@ -149,26 +179,29 @@ def dump_db(conn, output):
 
     
 def main():
-    queue = Queue.Queue()
-    res_queue = Queue.Queue()   # Queue for puting results
+    iter_bf_seqs = generate_bf_seqs()
 
-    for i in range(NUM_WORKER_THREADS - 1):
-        thr = threading.Thread(target=worker, args=(queue, res_queue))
-        thr.daemon = True
-        thr.start()
+    queue = Queue()
 
-    # for (bf_id, id_seqs) in generate_bf_seqs():
-    #     queue.put((bf_id, id_seqs))
-    for k, (bf_id, id_seqs) in enumerate(generate_bf_seqs()):
-        if k % 50 == 0:
-            logging.info('enqueuing {0}th bf'.format(k))
+    procs = []
+    for i in range(NUM_CPUS - 1):
+        proc = Process(target=worker, args=(queue, i))
+        proc.daemon = True
+        procs.append(proc)
+        proc.start()
+
+    for k, (bf_id, id_seqs) in enumerate(iter_bf_seqs):
+        if (k + 1) % 10000 == 0:
+            logging.info('enqueuing {0}th bf'.format(k + 1))
         queue.put((bf_id, id_seqs))
+    logging.info('enqueued {0}th bf'.format(k + 1))
 
-    queue.join()                # block till all tasks are finished
+    for proc in procs:
+        proc.join()
 
-    output = 'dump.sql'
-    put_to_db(res_queue, output)
-    res_queue.join()
+    # output = 'dump.sql'
+    # put_to_db(res_queue, output)
+
 
 
 if __name__ == "__main__":
