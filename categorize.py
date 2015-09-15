@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import bitarray
 import sqlite3
+import multiprocessing
 
 
 from objs import BloomFilter
@@ -14,17 +15,6 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s|%(levelname)s|%(message)s')
 
 K_MER_SIZE = 20
-
-# seq_id: 0
-# TEST_READ = 'ATTCTTTCGCTTAACTCTGTGTTTGCGTTAAACCTTCTGTGGTAGGTGTCTAGTCTACAGGCCTAACTGTTACTTGATTTCTTGTCAAGTCAGGCAGTGGAGTGACGACAAGCGATTGTTGCCGCTAGACTTAAAGATTATTCACCTCGA'
-# mutated seq_id: 0
-# TEST_READ = 'ATTCTTTCGCTTAACTCTGTGTTTGCGTTAAACCTTCTGTGGTAGGGGTCTAGTCTACAGGCCTAACTGTTACTTGATTTCTTGTCAAGTCAGGCAGTGGAGTGACGACAAGCGATTGTAGCCGCTAGACTTAAAGATTATTCACCTCGA'
-# seq_id: 8
-# TEST_READ = 'AGAACGCAGCGAAGCGCGAAATGTAGTGTGAATCGCAGAACATTGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCCGTTACTGGGAGGCATGCCTGTCTGAGCGTCATTTAAAACGTAGCACCCCACCAAGGGTCTGTCTTGGG'
-# seq_id: 88
-TEST_READ = 'CTCGCATCGATGAAGAACGCAGCGAAGCGCGAAATGTAATGTGAATCGCAGAACATTGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCAGTAACTCGGAGGCATGCCTGTCTGAGCGTCATTTAAAACCATGGACCCGACCGGG'
-
-
 SCORE_CUTOFF = 0.5
 
 def load_bfs(db_file):
@@ -40,8 +30,18 @@ def load_bfs(db_file):
     logging.info('executing {0}'.format(sql))
     cur.execute(sql)
     
+    logging.info('building bfs')
     bfs = {}
-    for bf_id, size, hash_count, bf in cur.fetchall():
+    freq = 1
+    next_freq = freq * 10
+    for k, (bf_id, size, hash_count, bf) in enumerate(cur):
+        k_plus_1 = k + 1
+        if k_plus_1 < next_freq:
+            if k_plus_1 % freq == 0:
+                logging.info('working on {0}th bf'.format(k_plus_1))
+        else:
+            freq *= 10
+            next_freq = freq * 10            
         bfs[bf_id] = BloomFilter(size, hash_count, bf)
     conn.close()
 
@@ -78,7 +78,7 @@ def calc_score(read, k_mer_size, bf):
 
 
 def score(read, bf):
-    f_read = TEST_READ
+    f_read = read
     r_read = reverse_complement(f_read)
 
     f_s = calc_score(f_read, K_MER_SIZE, bf)
@@ -88,26 +88,13 @@ def score(read, bf):
     return max(f_s, r_s)
 
 
-def main():
-    db_file = 'lele_db/combined.db'
-    # db_file = 'db.bk/2.db'
+def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
+    """
+    if calculated score < score_cutoff, then stop searching
 
-    bfs = load_bfs(db_file)
+    :param hit: a list that whole hit bf_ids
+    """
 
-    # from pprint import pprint
-    # pprint(bfs)
-
-    res = get_bf(TEST_READ, bfs, SCORE_CUTOFF)
-    print 'bf_id: ', res
-
-
-    # bf = bitarray.bitarray()
-    # bf.frombytes(str(bfs[1]))
-    # print bf
-
-
-def get_bf(read, bfs, score_cutoff, bf_id=0, level=0):
-    """if calculated score < score_cutoff, then stop searching"""
     a, b = U.calc_children_id(bf_id, level)
     level += 1
 
@@ -122,39 +109,76 @@ def get_bf(read, bfs, score_cutoff, bf_id=0, level=0):
         if _s_b >= score_cutoff:
             s_b = _s_b
 
-    logging.debug('{a}: {s_a}, {b}: {s_b}, level: {level}, '
-                  'score_cutoff: {cutoff}'.format(a=a, b=b, s_a=_s_a, s_b=_s_b,
-                                                  level=level, cutoff=score_cutoff))
+    logging.debug('score_cutoff: {cutoff}, level: {level}, '
+                  '({a}): {s_a}, ({b}): {s_b}'.format(
+                      a=a, b=b, s_a=_s_a, s_b=_s_b,
+                      level=level, cutoff=score_cutoff))
 
     # Don't change the order of if in the following code! They must be this
-    # way, or use elif with less eligibility
+    # way, or use elif with less eligibility. And don't forget to return after
+    # each if
 
     # bf_id is the bottom of the bfs tree or score is two low for both children bfs
     if s_a is None and s_b is None:
-        return bf_id
+        hit.append(bf_id)
+        return
 
     if s_a is not None and s_b is not None:
         if s_a > s_b:
-            return get_bf(read, bfs, score_cutoff, a, level)
+            get_bf(read, bfs, score_cutoff, hit, a, level)
+            return
         elif s_a < s_b:
-            return get_bf(read, bfs, score_cutoff, b, level)
+            get_bf(read, bfs, score_cutoff, hit, b, level)
+            return
         else:
             # multimatch: pass through both channels
-            get_bf(read, bfs, score_cutoff, a, level)
-            get_bf(read, bfs, score_cutoff, b, level)
-            return 
+            get_bf(read, bfs, score_cutoff, hit, a, level)
+            get_bf(read, bfs, score_cutoff, hit, b, level)
+            return
+
+    # if s_a is not None and s_b is not None:
+    #     # multimatch: pass through both channels
+    #     get_bf(read, bfs, score_cutoff, hit, a, level)
+    #     get_bf(read, bfs, score_cutoff, hit, b, level)
+    #     return 
 
     if s_a is not None:
         if s_a > score_cutoff:
-            return get_bf(read, bfs, score_cutoff, a, level)
+            get_bf(read, bfs, score_cutoff, hit, a, level)
         else:
-            return bf_id
+            hit.append(bf_id)
+        return
 
     if s_b is not None:
         if s_b > score_cutoff:
-            return get_bf(read, bfs, score_cutoff, b, level)
+            get_bf(read, bfs, score_cutoff, hit, b, level)
         else:
-            return bf_id
+            hit.append(bf_id)
+        return
 
 
-main()
+if __name__ == "__main__":
+    db_file = 'lele_db/combined.db'
+    # db_file = 'db/combined.db'
+    # db_file = 'db.bk/2.db'
+
+    bfs = load_bfs(db_file)
+
+    # from pprint import pprint
+    # pprint(bfs)
+
+    from test_data import TEST_READS, TEST_READ_4
+
+    res = {}
+    for __ in TEST_READS:
+        print __
+        hit = []
+        get_bf(__, bfs, SCORE_CUTOFF, hit)
+        for bf_id in hit:
+            if bf_id in res:
+                res[bf_id] += 1
+            else:
+                res[bf_id] = 1
+
+    from pprint import pprint
+    pprint(res)
