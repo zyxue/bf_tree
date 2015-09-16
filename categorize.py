@@ -243,8 +243,8 @@ if __name__ == "__main__":
     if DEBUG:
         db_file = 'debug_db/combined.db'
     else:
-        db_file = 'db/combined.db'
-
+        # db_file = 'db/combined.db'
+        db_file = 'debug_db/combined.db'
 
     # init shared variables among multiple processes
     # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
@@ -280,7 +280,7 @@ if __name__ == "__main__":
     freq, next_freq = 1, 10
     for k, read in enumerate(input_reads):
         k_plus_1 = k + 1
-        if k_plus_1 < next_freq:
+        if k_plus_1 <= next_freq:
             if k_plus_1 % freq == 0:
                 logging.info('enqueuing {0}th read'.format(k_plus_1))
                 logging.info(read)
@@ -288,6 +288,7 @@ if __name__ == "__main__":
             freq *= 10
             next_freq = freq * 10            
         queue.put(read)
+    logging.info('enqueued {0} reads in total'.format(k_plus_1))
 
     for proc in procs:
         proc.join()
