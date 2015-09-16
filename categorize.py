@@ -6,11 +6,14 @@ import bitarray
 import sqlite3
 import pandas as pd
 from multiprocessing import Manager, Value, Queue, Process, Lock
+import gzip
 
+from Bio import SeqIO
 
 from objs import BloomFilter
 import utils as U
 from constants import COMPLEMENT_DD
+
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
@@ -172,15 +175,29 @@ def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
 def worker(pid, queue, bfs, score_cutoff, res_count, lock):
     score_cutoff = score_cutoff.value
     res = {}                    # hold result for this process
+
+    counter = 0
     while True:
         read = queue.get()
         hit = []
-        get_bf(read, bfs, score_cutoff, hit)
+
+        # this is temporary because of the imperfection of the database, has to
+        # start from the second level, with a better database, it just need to
+        # start from level 0
+        for (bf_id, level) in [(3, 2), (4, 2), (5, 2), (6, 2)]:
+            get_bf(read, bfs, score_cutoff, hit, bf_id, level)
+
+        # get_bf(read, bfs, score_cutoff, hit)
+
         for bf_id in hit:
             if bf_id in res:
                 res[bf_id] += 1
             else:
                 res[bf_id] = 1
+
+        counter += 1
+        if counter % 10000 == 0:
+            logging.info("pid: {0}, analyzed {1} reads".format(pid, counter))
 
         if queue.empty():
             more_task = False   # indicate whether there are more tasks or not
@@ -214,6 +231,14 @@ def worker(pid, queue, bfs, score_cutoff, res_count, lock):
                 res_count[k] = res[k]
 
 
+def fetch_reads(*fq_gzs):
+    for fq_gz in fq_gzs:
+        logging.info('working on {0}'.format(fq_gz))
+        with gzip.open(fq_gz) as inf:
+            for rec in SeqIO.parse(inf, "fastq"):
+                yield str(rec.seq)
+
+
 if __name__ == "__main__":
     if DEBUG:
         db_file = 'debug_db/combined.db'
@@ -242,14 +267,18 @@ if __name__ == "__main__":
         proc.start()
 
     if DEBUG:
-        from pprint import pprint
-        pprint(bfs)
-
-    from test_data import TEST_READS, TEST_READ_4
+        from test_data import TEST_READS
+        input_reads = TEST_READS
+    else:
+        fq_gzs = [
+            '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_1.fq.gz',
+            '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_2.fq.gz'
+        ]
+        input_reads = fetch_reads(*fq_gzs)
 
     # enqueue input data
     freq, next_freq = 1, 10
-    for k, read in enumerate(TEST_READS):
+    for k, read in enumerate(input_reads):
         k_plus_1 = k + 1
         if k_plus_1 < next_freq:
             if k_plus_1 % freq == 0:
@@ -262,9 +291,6 @@ if __name__ == "__main__":
 
     for proc in procs:
         proc.join()
-            
-    for k in sorted(res_count.items(), key=lambda x: x[1], reverse=True):
-        print k
 
     df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'seq_id'])
     df.sort('seq_id', ascending=False, inplace=True)
