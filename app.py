@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import glob
 import os
 import time
 import sqlite3
@@ -7,19 +8,45 @@ import gzip
 import threading
 from multiprocessing import Queue, Process
 import logging
-logging.basicConfig(level=logging.DEBUG, filename='app_serial.log',
-                    filemode='w',
-                    format='%(asctime)s|%(levelname)s|%(message)s')
 
 import numpy as np
 import pandas as pd
 
-from utils import pretty_usage, timeit, memo, split_indexes
+from utils import pretty_usage, timeit, memo, split_indexes, kmerize
 from objs import BloomFilterBuilder
 
 
+DEBUG = True
+
+
+if DEBUG:
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s|%(levelname)s|%(message)s')
+else:
+    logging.basicConfig(level=logging.DEBUG,
+                        filename='app.log', filemode='w',
+                        format='%(asctime)s|%(levelname)s|%(message)s')
+
 K_MER_SIZE = 20
-NUM_CPUS = 32         # given 32 cores
+if DEBUG:
+    NUM_CPUS = 4
+    DB_OUTPUT_DIR = 'debug_db'
+else:
+    NUM_CPUS = 32         # given 32 cores
+    DB_OUTPUT_DIR = 'db'
+if not os.path.exists(DB_OUTPUT_DIR):
+    os.mkdir(DB_OUTPUT_DIR)
+
+
+SQL_CREATE_TABLE = """CREATE TABLE 
+    bloomfilter
+    (bf_id INTEGER PRIMARY KEY,
+    num_uniq_kmers INTEGER,
+    size INTEGER,
+    hash_count INTEGER,
+    fpr REAL,
+    bitarray BLOB,
+    seq_id)"""
 
 
 def generate_seqid_seqs():
@@ -27,8 +54,10 @@ def generate_seqid_seqs():
 
     input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
     logging.info('reading {0}'.format(input_))
-    df = pd.read_csv(input_, compression='gzip')
-    # df = pd.read_csv(input_, compression='gzip', nrows=100)
+    if DEBUG:
+        df = pd.read_csv(input_, compression='gzip', nrows=100)
+    else:
+        df = pd.read_csv(input_, compression='gzip')
     logging.info('reading Done')
 
     seqs = df.seq.values
@@ -38,13 +67,6 @@ def generate_seqid_seqs():
     # index each seq, 0-based index, ends up with tuples of (seq_id, seq)
     seqid_seqs = zip(xrange(len(seqs)), seqs)
     return seqid_seqs
-
-
-def kmerize(seq, kmer_size):
-    res = []
-    for i in xrange(len(seq) + 1 - kmer_size):
-        res.append(seq[i:i + kmer_size])
-    return res
 
 
 def calc_bf_size(n, p):
@@ -73,7 +95,7 @@ def build_bf(id_seqs):
     calc_num_kmers = lambda seq: (len(seq) - K_MER_SIZE + 1)
     num_kmers = sum(calc_num_kmers(x[1]) for x in id_seqs)
 
-    prob = 0.00075
+    prob = 0.0075
 
     hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, prob)
     logging.info('bf_size: {0} ({1})'.format(bf_size, pretty_usage(bf_size / 8.)))
@@ -108,14 +130,13 @@ def build_bf(id_seqs):
 
 def worker(queue, db_count):
     logging.info('connecting to db...')
-    output_db = "db/{0}.db".format(db_count)
+    output_db = os.path.join(DB_OUTPUT_DIR, "{0}.db".format(db_count))
     if os.path.exists(output_db):
         os.remove(output_db)
     conn = sqlite3.connect(output_db)
     cursor = conn.cursor()
 
-    # cursor.execute("CREATE TABLE bloomfilter (bf_id INTEGER PRIMARY KEY, bitarray BLOB, FOREIGN KEY(seq_id) REFERENCES seq(id))")
-    cursor.execute("CREATE TABLE bloomfilter (bf_id INTEGER PRIMARY KEY, num_uniq_kmers INTEGER, size INTEGER, hash_count INTEGER, fpr REAL, bitarray BLOB, seq_id)")
+    cursor.execute(SQL_CREATE_TABLE)
 
     counter = 0
     while True:
@@ -132,7 +153,10 @@ def worker(queue, db_count):
 
         if queue.empty():
             more_task = False   # indicate whether there are more tasks or not
-            n_loop = 10
+            if DEBUG:
+                n_loop = 3
+            else:
+                n_loop = 10
             for i in xrange(1, n_loop + 1):
                 logging.info('db_count: {0}: waiting {1}s for queue to be non-empty'.format(db_count, i))
                 time.sleep(i)
@@ -151,6 +175,31 @@ def worker(queue, db_count):
                                  db_count, total_seconds))
                 break
     conn.commit()               # commit remaining execution
+
+
+
+def combine_db(db_dir):
+    output_db = os.path.join(db_dir, 'combined.db')
+
+    if os.path.exists(output_db):
+        os.remove(output_db)
+
+
+    dbs = sorted(glob.glob(os.path.join(db_dir, '[0-9]*.db')))
+
+    conn = sqlite3.connect(output_db)
+    cursor = conn.cursor()
+
+    cursor.execute(SQL_CREATE_TABLE)
+
+    for db in dbs:
+        logging.info('combining {0} into {1}'.format(db, output_db))
+        cursor.execute('attach "{0}" as toCombine'.format(db))
+        cursor.execute('insert into bloomfilter select * from toCombine.bloomfilter'.format(db))
+        cursor.execute('detach toCombine'.format(db))
+
+    conn.commit()
+    conn.close()
 
 
 def main():
@@ -175,6 +224,8 @@ def main():
 
     for proc in procs:
         proc.join()
+
+    combine_db(DB_OUTPUT_DIR)
 
     # output = 'dump.sql'
     # put_to_db(res_queue, output)
