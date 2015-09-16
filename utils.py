@@ -1,4 +1,5 @@
 import time
+import numpy as np
 from functools import update_wrapper
 
 
@@ -48,7 +49,6 @@ def pretty_usage(num):
     return "%3.1f %s" % (num, 'PB')
 
 
-
 def split(array, current_id=0, current_level=0):
     """split array recursively, keeping track of subarray ids, starting from 0"""
     n = len(array)
@@ -68,6 +68,28 @@ def split(array, current_id=0, current_level=0):
         for a in split(subarray1, c1_id, current_level):
             yield a
         for a in split(subarray2, c2_id, current_level):
+            yield a
+        return
+
+
+
+def split_indexes(beg, end, current_id=0, current_level=0):
+    """only return indexes to save memory usage"""
+    """split array recursively, keeping track of subarray ids, starting from 0"""
+    delta = end - beg
+    if delta == 1:
+        return
+    else:
+        c1_id, c2_id = calc_children_id(current_id, current_level)
+        current_level += 1
+
+        mid = delta // 2 + beg
+        yield (c1_id, beg, mid)
+        yield (c2_id, mid, end)
+
+        for a in split_indexes(beg, mid, c1_id, current_level):
+            yield a
+        for a in split_indexes(mid, end, c2_id, current_level):
             yield a
         return 
 
@@ -97,6 +119,11 @@ def calc_total_num_nodes_above(level):
     return 2 ** level - 1
 
 
+def calc_level(current_id):
+    """given an id, calculate its level"""
+    return int(np.log2(current_id + 1))
+
+
 def calc_ith_node(current_id, level):
     return current_id - calc_total_num_nodes_above(level) + 1
 
@@ -113,3 +140,10 @@ def calc_children_id(current_id, current_level):
     c2 = 2 * i + (num_nodes_above + num_nodes_at_current_level - 1)
     c1 = c2 - 1
     return c1, c2
+
+
+def kmerize(seq, kmer_size):
+    res = []
+    for i in xrange(len(seq) + 1 - kmer_size):
+        res.append(seq[i:i + kmer_size])
+    return res
