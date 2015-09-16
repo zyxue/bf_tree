@@ -152,6 +152,31 @@ def test_split_indexes():
     assert (13, 7, 8) in subarrays
     assert (14, 8, 10) in subarrays
 
+    # quaternary
+    subarrays = list(U.split_indexes(0, 15, 4))
+    for __ in sorted(subarrays):
+        print __
+    assert (1, 0, 3) in subarrays
+    assert (2, 3, 6) in subarrays
+    assert (3, 6, 9) in subarrays
+    assert (4, 9, 15) in subarrays
+    assert (5, 0, 1) in subarrays
+    assert (6, 1, 2) in subarrays
+    assert (7, 2, 3) in subarrays
+    assert (9, 3, 4) in subarrays
+    assert (10, 4, 5) in subarrays
+    assert (11, 5, 6) in subarrays
+    assert (13, 6, 7) in subarrays
+    assert (14, 7, 8) in subarrays
+    assert (15, 8, 9) in subarrays
+    assert (17, 9, 10) in subarrays
+    assert (18, 10, 11) in subarrays
+    assert (19, 11, 12) in subarrays
+    assert (20, 12, 15) in subarrays
+    assert (81, 12, 13) in subarrays
+    assert (82, 13, 14) in subarrays
+    assert (83, 14, 15) in subarrays
+
 
 test_calc_total_num_nodes_above()
 test_calc_total_num_nodes_above_quaternary()
@@ -160,7 +185,5 @@ test_calc_level_quaternary()
 test_ith_node()
 test_ith_node_quaternary()
 test_calc_children_id()
-# test_split()
-# test_split_indexes()
-
-
+test_split_indexes()
+test_split()

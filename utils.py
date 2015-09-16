@@ -74,28 +74,37 @@ def split(array, current_id=0, current_level=0):
 
 
 
-def split_indexes(beg, end, current_id=0, current_level=0, n_branches=2):
+def split_indexes(beg, end, nbr=2, current_id=0, current_level=0):
     """only return indexes to save memory usage
 
     split array recursively, keeping track of subarray ids, starting from 0
 
-    :param b: when it's 2, it's a binary tree
+    :param nbr: number of branches, when it's 2, it's a binary tree
     """
     delta = end - beg
+    # print beg, end, nbr, current_id, current_level, delta
     if delta == 1:
         return
     else:
-        c1_id, c2_id = calc_children_id(current_id, current_level)
+        cids = calc_children_id(current_id, current_level, nbr)
         current_level += 1
 
-        mid = delta // 2 + beg
-        yield (c1_id, beg, mid)
-        yield (c2_id, mid, end)
+        if delta <= nbr:
+            # where there are less elements than intended branches, which
+            # signals the bottom of the tree
+            nbr = delta
 
-        for a in split_indexes(beg, mid, c1_id, current_level):
-            yield a
-        for a in split_indexes(mid, end, c2_id, current_level):
-            yield a
+        step = delta // nbr
+        for i in xrange(nbr):
+            sub_beg = beg + i * step
+            if i == nbr - 1:
+                # dealing with the ending uneven split chunks
+                sub_end = end
+            else:
+                sub_end = sub_beg + step
+            yield (cids[i], sub_beg, sub_end)
+            for a in split_indexes(sub_beg, sub_end, nbr, cids[i], current_level):
+                yield a
         return 
 
 
