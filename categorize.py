@@ -1,12 +1,16 @@
 from __future__ import unicode_literals
 
+import os
+import time
 import bitarray
 import sqlite3
-import multiprocessing
+import pandas as pd
+from multiprocessing import Manager, Value, Queue, Process, Lock
 
 
 from objs import BloomFilter
 import utils as U
+from constants import COMPLEMENT_DD
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
@@ -14,8 +18,21 @@ logging.basicConfig(level=logging.DEBUG,
                     # filemode='w',
                     format='%(asctime)s|%(levelname)s|%(message)s')
 
+from settings import DEBUG
+
+
 K_MER_SIZE = 20
 SCORE_CUTOFF = 0.5
+
+if DEBUG:
+    NUM_CPUS = 4
+    DB_OUTPUT_DIR = 'debug_db'
+else:
+    NUM_CPUS = 32         # given 32 cores
+    DB_OUTPUT_DIR = 'db'
+if not os.path.exists(DB_OUTPUT_DIR):
+    os.mkdir(DB_OUTPUT_DIR)
+
 
 def load_bfs(db_file):
     """
@@ -49,16 +66,8 @@ def load_bfs(db_file):
     return bfs
 
 
-COMPLEMENT_DD = {
-    'A': 'T',
-    'C': 'G',
-    'T': 'A',
-    'G': 'C',
-    'N': 'N'
-}
 def reverse_complement(seq):
-    return ''.join([COMPLEMENT_DD[x] for x in seq[::-1]])
-
+    return ''.join([COMPLEMENT_DD.get(x, 'N') for x in seq[::-1]])
 
 
 def calc_score(read, k_mer_size, bf):
@@ -109,10 +118,10 @@ def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
         if _s_b >= score_cutoff:
             s_b = _s_b
 
-    logging.debug('score_cutoff: {cutoff}, level: {level}, '
-                  '({a}): {s_a}, ({b}): {s_b}'.format(
-                      a=a, b=b, s_a=_s_a, s_b=_s_b,
-                      level=level, cutoff=score_cutoff))
+    # logging.debug('score_cutoff: {cutoff}, level: {level}, '
+    #               '({a}): {s_a}, ({b}): {s_b}'.format(
+    #                   a=a, b=b, s_a=_s_a, s_b=_s_b,
+    #                   level=level, cutoff=score_cutoff))
 
     # Don't change the order of if in the following code! They must be this
     # way, or use elif with less eligibility. And don't forget to return after
@@ -136,6 +145,9 @@ def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
             get_bf(read, bfs, score_cutoff, hit, b, level)
             return
 
+    # Compared to the above block, this block encourages multiMatch, which may
+    # increase the complexity of results interpretation
+
     # if s_a is not None and s_b is not None:
     #     # multimatch: pass through both channels
     #     get_bf(read, bfs, score_cutoff, hit, a, level)
@@ -157,28 +169,104 @@ def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
         return
 
 
-if __name__ == "__main__":
-    db_file = 'lele_db/combined.db'
-    # db_file = 'db/combined.db'
-    # db_file = 'db.bk/2.db'
-
-    bfs = load_bfs(db_file)
-
-    # from pprint import pprint
-    # pprint(bfs)
-
-    from test_data import TEST_READS, TEST_READ_4
-
-    res = {}
-    for __ in TEST_READS:
-        print __
+def worker(pid, queue, bfs, score_cutoff, res_count, lock):
+    score_cutoff = score_cutoff.value
+    res = {}                    # hold result for this process
+    while True:
+        read = queue.get()
         hit = []
-        get_bf(__, bfs, SCORE_CUTOFF, hit)
+        get_bf(read, bfs, score_cutoff, hit)
         for bf_id in hit:
             if bf_id in res:
                 res[bf_id] += 1
             else:
                 res[bf_id] = 1
 
-    from pprint import pprint
-    pprint(res)
+        if queue.empty():
+            more_task = False   # indicate whether there are more tasks or not
+            if DEBUG:
+                n_loop = 1
+            else:
+                n_loop = 10
+            for i in xrange(1, n_loop + 1):
+                logging.info('pid: {0}: waiting {1}s for queue to be non-empty'.format(pid, i))
+                time.sleep(i)
+                if not queue.empty():
+                    logging.info('pid: {0}: more tasks found after {1}s '
+                                 'wait, back to work'.format(pid, (i + 1) * i / 2))
+                    more_task = True
+                    break
+
+            if more_task:
+                continue
+            else:
+                total_seconds = (n_loop + 1) * n_loop / 2.
+                logging.info('pid: {0}: still empty after {1}s wait for '
+                             'the queue, break the while loop'.format(
+                                 pid, total_seconds))
+                break
+
+    with lock:
+        for k in res.keys():
+            if k in res_count.keys():
+                res_count[k] += res[k]
+            else:
+                res_count[k] = res[k]
+
+
+if __name__ == "__main__":
+    if DEBUG:
+        db_file = 'debug_db/combined.db'
+    else:
+        db_file = 'db/combined.db'
+
+
+    # init shared variables among multiple processes
+    # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
+    score_cutoff = Value('d', SCORE_CUTOFF) # value is faster than manager
+    manager = Manager()
+    bfs = manager.dict(load_bfs(db_file))
+    res_count = manager.dict() # to hold results of a dictionary of (bf_id: count)
+    lock = Lock()
+
+    # init queue for input data 
+    queue = Queue()
+
+    # start multiple processes
+    procs = []
+    for pid in range(NUM_CPUS - 1):
+        proc = Process(target=worker, args=(pid, queue, bfs, score_cutoff,
+                                            res_count, lock))
+        proc.daemon = True
+        procs.append(proc)
+        proc.start()
+
+    if DEBUG:
+        from pprint import pprint
+        pprint(bfs)
+
+    from test_data import TEST_READS, TEST_READ_4
+
+    # enqueue input data
+    freq, next_freq = 1, 10
+    for k, read in enumerate(TEST_READS):
+        k_plus_1 = k + 1
+        if k_plus_1 < next_freq:
+            if k_plus_1 % freq == 0:
+                logging.info('enqueuing {0}th read'.format(k_plus_1))
+                logging.info(read)
+        else:
+            freq *= 10
+            next_freq = freq * 10            
+        queue.put(read)
+
+    for proc in procs:
+        proc.join()
+            
+    for k in sorted(res_count.items(), key=lambda x: x[1], reverse=True):
+        print k
+
+    df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'seq_id'])
+    df.sort('seq_id', ascending=False, inplace=True)
+    df.to_csv('res_count.csv', index=False)
+
