@@ -12,8 +12,11 @@ from Bio import SeqIO
 
 from objs import BloomFilter
 import utils as U
-from constants import COMPLEMENT_DD
-
+from constants import (
+    K_MER_SIZE,
+    SCORE_CUTOFF,
+    NBR,
+    COMPLEMENT_DD)
 
 import logging
 
@@ -26,9 +29,6 @@ else:
     logging.basicConfig(level=logging.DEBUG,
                         filename='categorize.log', filemode='w',
                         format='%(asctime)s|%(levelname)s|%(message)s')
-
-K_MER_SIZE = 20
-SCORE_CUTOFF = 0.5
 
 if DEBUG:
     NUM_CPUS = 4
@@ -58,14 +58,15 @@ def load_bfs(db_file):
     freq = 1
     next_freq = freq * 10
     for k, (bf_id, size, hash_count, bf) in enumerate(cur):
+        bfs[bf_id] = BloomFilter(size, hash_count, bf)
         k_plus_1 = k + 1
         if k_plus_1 <= next_freq:
             if k_plus_1 % freq == 0:
-                logging.info('working on {0}th bf'.format(k_plus_1))
+                logging.info('built {0} bfs'.format(k_plus_1))
         else:
             freq *= 10
-            next_freq = freq * 10            
-        bfs[bf_id] = BloomFilter(size, hash_count, bf)
+            next_freq = freq * 10
+    logging.info('built {0}th bfs in total'.format(k_plus_1))
     conn.close()
 
     logging.info('loading is done'.format(db_file))
@@ -103,79 +104,60 @@ def score(read, bf):
     return max(f_s, r_s)
 
 
-def get_bf(read, bfs, score_cutoff, hit, bf_id=0, level=0):
+def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     """
     if calculated score < score_cutoff, then stop searching
 
     :param hit: a list that whole hit bf_ids
     """
 
-    a, b = U.calc_children_id(bf_id, level)
+    cids = U.calc_children_id(bf_id, level, nbr=nbr)
     level += 1
 
     # _s_a, _s_b are just temporary place holders
-    _s_a, _s_b, s_a, s_b = None, None, None, None
-    if a in bfs:
-        _s_a = score(read, bfs[a])
-        if _s_a >= score_cutoff:
-            s_a = _s_a
-    if b in bfs:
-        _s_b = score(read, bfs[b])
-        if _s_b >= score_cutoff:
-            s_b = _s_b
+    scores = []
+    for cid in cids:
+        if cid in bfs:
+            _score = score(read, bfs[cid])
+            if _score > score_cutoff:
+                scores.append(_score)
+            else:
+                scores.append(None)
 
-    # logging.debug('score_cutoff: {cutoff}, level: {level}, '
-    #               '({a}): {s_a}, ({b}): {s_b}'.format(
-    #                   a=a, b=b, s_a=_s_a, s_b=_s_b,
-    #                   level=level, cutoff=score_cutoff))
+    cid_scores = zip(cids, scores)
+    if DEBUG:
+        logging.debug('score_cutoff: {cutoff}, current_bf: {bf_id}, level: {level}, '
+                      '{cid_scores}'.format(level=level, bf_id=bf_id,
+                                            cutoff=score_cutoff,
+                                            cid_scores=cid_scores))
 
+    cid_scores = [__ for __ in cid_scores if __[1] is not None]
     # Don't change the order of if in the following code! They must be this
     # way, or use elif with less eligibility. And don't forget to return after
     # each if
 
-    # bf_id is the bottom of the bfs tree or score is two low for both children bfs
-    if s_a is None and s_b is None:
+    # bf_id is the bottom of the bfs tree or score is too low for all children bfs
+    if not cid_scores:
         hit.append(bf_id)
         return
 
-    if s_a is not None and s_b is not None:
-        if s_a > s_b:
-            get_bf(read, bfs, score_cutoff, hit, a, level)
-            return
-        elif s_a < s_b:
-            get_bf(read, bfs, score_cutoff, hit, b, level)
-            return
-        else:
-            # multimatch: pass through both channels
-            get_bf(read, bfs, score_cutoff, hit, a, level)
-            get_bf(read, bfs, score_cutoff, hit, b, level)
-            return
+    # find cids with the SAME MAX scores
+    max_score = 0
+    max_cids = []               # cids with max_scores
+    for (c, s) in cid_scores:
+        if s >= max_score:
+            if s > max_score:
+                max_score = s
+                max_cids = [c]
+            else:
+                max_cids.append(c)
 
-    # Compared to the above block, this block encourages multiMatch, which may
-    # increase the complexity of results interpretation
-
-    # if s_a is not None and s_b is not None:
-    #     # multimatch: pass through both channels
-    #     get_bf(read, bfs, score_cutoff, hit, a, level)
-    #     get_bf(read, bfs, score_cutoff, hit, b, level)
-    #     return 
-
-    if s_a is not None:
-        if s_a > score_cutoff:
-            get_bf(read, bfs, score_cutoff, hit, a, level)
-        else:
-            hit.append(bf_id)
-        return
-
-    if s_b is not None:
-        if s_b > score_cutoff:
-            get_bf(read, bfs, score_cutoff, hit, b, level)
-        else:
-            hit.append(bf_id)
+    for __ in max_cids:
+        get_bf(read, bfs, nbr, score_cutoff, hit, __, level)
         return
 
 
-def worker(pid, queue, bfs, score_cutoff, res_count, lock):
+def worker(pid, queue, bfs, nbr, score_cutoff, res_count, lock):
     score_cutoff = score_cutoff.value
     res = {}                    # hold result for this process
 
@@ -184,13 +166,7 @@ def worker(pid, queue, bfs, score_cutoff, res_count, lock):
         read = queue.get()
         hit = []
 
-        # this is temporary because of the imperfection of the database, has to
-        # start from the second level, with a better database, it just need to
-        # start from level 0
-        for (bf_id, level) in [(3, 2), (4, 2), (5, 2), (6, 2)]:
-            get_bf(read, bfs, score_cutoff, hit, bf_id, level)
-
-        # get_bf(read, bfs, score_cutoff, hit)
+        get_bf(read, bfs, nbr, score_cutoff, hit)
 
         for bf_id in hit:
             if bf_id in res:
@@ -205,19 +181,6 @@ def worker(pid, queue, bfs, score_cutoff, res_count, lock):
             interval = 5000
         if counter % interval == 0:
             logging.info('pid: {0}, analyzed {1} reads'.format(pid, counter))
-
-
-            # for having quick peak of the temporary results    
-            with lock:
-                for k in res.keys():
-                    if k in res_count.keys():
-                        res_count[k] += res[k]
-                    else:
-                        res_count[k] = res[k]
-
-                for item in sorted(res.items(), key=lambda x: x[1], reverse=True)[:20]:
-                    logging.info('pid: {0}, {1}'.format(pid, item))
-                res = {}
 
         if queue.empty():
             more_task = False   # indicate whether there are more tasks or not
@@ -279,7 +242,7 @@ if __name__ == "__main__":
     # start multiple processes
     procs = []
     for pid in range(NUM_CPUS - 1):
-        proc = Process(target=worker, args=(pid, queue, bfs, score_cutoff,
+        proc = Process(target=worker, args=(pid, queue, bfs, NBR, score_cutoff,
                                             res_count, lock))
         proc.daemon = True
         procs.append(proc)
