@@ -16,13 +16,16 @@ from constants import COMPLEMENT_DD
 
 
 import logging
-logging.basicConfig(level=logging.DEBUG,
-                    # filename='app.log',
-                    # filemode='w',
-                    format='%(asctime)s|%(levelname)s|%(message)s')
 
 from settings import DEBUG
 
+if DEBUG:
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s|%(levelname)s|%(message)s')
+else:
+    logging.basicConfig(level=logging.DEBUG,
+                        filename='categorize.log', filemode='w',
+                        format='%(asctime)s|%(levelname)s|%(message)s')
 
 K_MER_SIZE = 20
 SCORE_CUTOFF = 0.5
@@ -196,8 +199,25 @@ def worker(pid, queue, bfs, score_cutoff, res_count, lock):
                 res[bf_id] = 1
 
         counter += 1
-        if counter % 10000 == 0:
-            logging.info("pid: {0}, analyzed {1} reads".format(pid, counter))
+        if DEBUG:
+            interval = 100
+        else:
+            interval = 5000
+        if counter % interval == 0:
+            logging.info('pid: {0}, analyzed {1} reads'.format(pid, counter))
+
+
+            # for having quick peak of the temporary results    
+            with lock:
+                for k in res.keys():
+                    if k in res_count.keys():
+                        res_count[k] += res[k]
+                    else:
+                        res_count[k] = res[k]
+
+                for item in sorted(res.items(), key=lambda x: x[1], reverse=True)[:20]:
+                    logging.info('pid: {0}, {1}'.format(pid, item))
+                res = {}
 
         if queue.empty():
             more_task = False   # indicate whether there are more tasks or not
@@ -243,8 +263,7 @@ if __name__ == "__main__":
     if DEBUG:
         db_file = 'debug_db/combined.db'
     else:
-        # db_file = 'db/combined.db'
-        db_file = 'debug_db/combined.db'
+        db_file = 'db/combined.db'
 
     # init shared variables among multiple processes
     # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
