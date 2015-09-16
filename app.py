@@ -1,3 +1,4 @@
+
 from __future__ import print_function
 
 import glob
@@ -217,7 +218,7 @@ def main():
     freq, next_freq = 1, 10
     for k, (bf_id, beg, end) in enumerate(bfid_beg_end_generator):
         k_plus_1 = k + 1
-        if k_plus_1 < next_freq:
+        if k_plus_1 <= next_freq:
             if k_plus_1 % freq == 0:
                 logging.info('enqueuing {0}th bf'.format(k + 1))
         else:

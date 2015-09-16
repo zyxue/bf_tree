@@ -59,7 +59,7 @@ def load_bfs(db_file):
     next_freq = freq * 10
     for k, (bf_id, size, hash_count, bf) in enumerate(cur):
         k_plus_1 = k + 1
-        if k_plus_1 < next_freq:
+        if k_plus_1 <= next_freq:
             if k_plus_1 % freq == 0:
                 logging.info('working on {0}th bf'.format(k_plus_1))
         else:
