@@ -13,7 +13,7 @@ import logging
 import numpy as np
 import pandas as pd
 
-from utils import pretty_usage, timeit, memo, split_indexes, kmerize
+from utils import pretty_usage, timeit, memo, split_indexes, kmerize, calc_level
 from objs import BloomFilterBuilder
 
 from settings import DEBUG
@@ -27,7 +27,10 @@ else:
                         filename='app.log', filemode='w',
                         format='%(asctime)s|%(levelname)s|%(message)s')
 
-K_MER_SIZE = 20
+from constants import (
+    K_MER_SIZE,
+    NBR)
+
 if DEBUG:
     NUM_CPUS = 4
     DB_OUTPUT_DIR = 'debug_db'
@@ -41,6 +44,7 @@ if not os.path.exists(DB_OUTPUT_DIR):
 SQL_CREATE_TABLE = """CREATE TABLE 
     bloomfilter
     (bf_id INTEGER PRIMARY KEY,
+     level INTEGER,
     num_uniq_kmers INTEGER,
     size INTEGER,
     hash_count INTEGER,
@@ -55,7 +59,7 @@ def generate_seqid_seqs():
     input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
     logging.info('reading {0}'.format(input_))
     if DEBUG:
-        df = pd.read_csv(input_, compression='gzip', nrows=100)
+        df = pd.read_csv(input_, compression='gzip', nrows=1000)
     else:
         df = pd.read_csv(input_, compression='gzip')
     logging.info('reading Done')
@@ -141,10 +145,11 @@ def worker(queue, db_count):
     counter = 0
     while True:
         bf_id, id_seqs = queue.get()
+        level = calc_level(bf_id, NBR)
         num_uniq_kmers, bf_size, bf_hash_count, bf_fpr, bf, seq_id = build_bf(id_seqs)
         # seq_id is None if the bf is built on multiple sequences
-        cursor.execute("INSERT INTO bloomfilter values (?, ?, ?, ?, ?, ?, ?)",
-                       (bf_id, num_uniq_kmers, bf_size, bf_hash_count, bf_fpr,
+        cursor.execute("INSERT INTO bloomfilter values (?, ?, ?, ?, ?, ?, ?, ?)",
+                       (bf_id, level, num_uniq_kmers, bf_size, bf_hash_count, bf_fpr,
                         sqlite3.Binary(bf.tobytes()), seq_id))
         counter += 1
         if counter % 10000 == 0:
@@ -204,7 +209,7 @@ def combine_db(db_dir):
 
 def main():
     seqid_seqs = generate_seqid_seqs()
-    bfid_beg_end_generator = split_indexes(0, len(seqid_seqs))
+    bfid_beg_end_generator = split_indexes(0, len(seqid_seqs), nbr=NBR)
 
     queue = Queue()
 
@@ -232,10 +237,6 @@ def main():
         proc.join()
 
     combine_db(DB_OUTPUT_DIR)
-
-    # output = 'dump.sql'
-    # put_to_db(res_queue, output)
-
 
 
 if __name__ == "__main__":
