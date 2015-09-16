@@ -24,7 +24,7 @@ if DEBUG:
                         format='%(asctime)s|%(levelname)s|%(message)s')
 else:
     logging.basicConfig(level=logging.DEBUG,
-                        filename='app.log', filemode='w',
+                        filename='build_tree.log', filemode='w',
                         format='%(asctime)s|%(levelname)s|%(message)s')
 
 from constants import (
@@ -102,8 +102,9 @@ def build_bf(id_seqs):
     prob = 0.0075
 
     hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, prob)
-    logging.info('bf_size: {0} ({1})'.format(bf_size, pretty_usage(bf_size / 8.)))
-    logging.info('hash_count: {0}'.format(hash_count))
+    if DEBUG:
+        logging.info('bf_size: {0} ({1})'.format(bf_size, pretty_usage(bf_size / 8.)))
+        logging.info('hash_count: {0}'.format(hash_count))
 
     # The number of unique kmers is approximate because it didn't take into
     # account of same kmers amond different sequences. This is for saving
@@ -121,12 +122,13 @@ def build_bf(id_seqs):
         for __ in kmers_set:
             bf_add(__)
 
-    logging.info('Total number of kmers: {0}'.format(num_total_kmers))
     num_uniq_kmers = bf_builder.num_uniq_elems
-    logging.info("Number of uniq kmers: {0}".format(num_uniq_kmers))
-
     fpr = bf_builder.calc_fpr()
-    logging.info("Real false positive rate: {0}".format(fpr))
+
+    if DEBUG:
+        logging.info('Total number of kmers: {0}'.format(num_total_kmers))
+        logging.info("Number of uniq kmers: {0}".format(num_uniq_kmers))
+        logging.info("Real false positive rate: {0}".format(fpr))
 
     return (num_uniq_kmers, bf_builder.size, bf_builder.hash_count,
             fpr, bf_builder.bit_array, seq_id)
