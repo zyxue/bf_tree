@@ -34,10 +34,13 @@ if DEBUG:
     NUM_CPUS = 4
     DB_OUTPUT_DIR = 'debug_db'
 else:
-    NUM_CPUS = 32         # given 32 cores
+    NUM_CPUS = 4         # given 32 cores
     DB_OUTPUT_DIR = 'db'
 if not os.path.exists(DB_OUTPUT_DIR):
     os.mkdir(DB_OUTPUT_DIR)
+
+
+NO_MATCH = 'no_match.txt'
 
 
 def load_bfs(db_file):
@@ -142,9 +145,7 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     if not cid_scores:
         hit.append(bf_id)
         if not bottom:
-            # nomatch read
-            logging.warning('no match for {0}'.format(read))
-            with open('no_match', 'ab') as opf:
+            with open(NO_MATCH, 'ab') as opf:
                 opf.write('{0}\n'.format(read))
         return
 
@@ -230,6 +231,9 @@ def fetch_reads(*fq_gzs):
 
 
 if __name__ == "__main__":
+    if os.path.exists(NO_MATCH):
+        os.remove(NO_MATCH)
+
     if DEBUG:
         db_file = 'debug_db/combined.db'
     else:
@@ -239,7 +243,8 @@ if __name__ == "__main__":
     # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
     score_cutoff = Value('d', SCORE_CUTOFF) # value is faster than manager
     manager = Manager()
-    bfs = manager.dict(load_bfs(db_file))
+    # bfs = manager.dict(load_bfs(db_file))
+    bfs = load_bfs(db_file)
     res_count = manager.dict() # to hold results of a dictionary of (bf_id: count)
     lock = Lock()
 
