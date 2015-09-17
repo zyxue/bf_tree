@@ -19,26 +19,28 @@ from objs import BloomFilterBuilder
 from settings import DEBUG
 
 
-if DEBUG:
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(asctime)s|%(levelname)s|%(message)s')
-else:
-    logging.basicConfig(level=logging.DEBUG,
-                        filename='build_tree.log', filemode='w',
-                        format='%(asctime)s|%(levelname)s|%(message)s')
-
 from constants import (
     K_MER_SIZE,
     NBR)
 
 if DEBUG:
     NUM_CPUS = 4
-    DB_OUTPUT_DIR = 'debug_db'
+    DB_OUTPUT_DIR = 'debug_db_nbr_{0}'.format(NBR)
 else:
     NUM_CPUS = 32         # given 32 cores
-    DB_OUTPUT_DIR = 'db'
+    DB_OUTPUT_DIR = 'db_nbr_{0}'.format(NBR)
 if not os.path.exists(DB_OUTPUT_DIR):
     os.mkdir(DB_OUTPUT_DIR)
+
+
+
+if DEBUG:
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s|%(levelname)s|%(message)s')
+else:
+    logging.basicConfig(level=logging.DEBUG,
+                        filename='build_tree_nbr_{0}.log'.format(NBR), filemode='w',
+                        format='%(asctime)s|%(levelname)s|%(message)s')
 
 
 SQL_CREATE_TABLE = """CREATE TABLE 
