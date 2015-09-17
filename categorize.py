@@ -115,9 +115,11 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     level += 1
 
     # _s_a, _s_b are just temporary place holders
+    bottom = True
     scores = []
     for cid in cids:
         if cid in bfs:
+            bottom = False
             _score = score(read, bfs[cid])
             if _score > score_cutoff:
                 scores.append(_score)
@@ -139,6 +141,11 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     # bf_id is the bottom of the bfs tree or score is too low for all children bfs
     if not cid_scores:
         hit.append(bf_id)
+        if not bottom:
+            # nomatch read
+            logging.warning('no match for {0}'.format(read))
+            with open('no_match', 'ab') as opf:
+                opf.write('{0}\n'.format(read))
         return
 
     # find cids with the SAME MAX scores
