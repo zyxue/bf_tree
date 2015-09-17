@@ -282,7 +282,7 @@ if __name__ == "__main__":
     for proc in procs:
         proc.join()
 
-    df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'seq_id'])
-    df.sort('seq_id', ascending=False, inplace=True)
+    df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'hit_count'])
+    df.sort('hit_count', ascending=False, inplace=True)
     df.to_csv('res_count.csv', index=False)
 
