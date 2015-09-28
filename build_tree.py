@@ -5,8 +5,6 @@ import glob
 import os
 import time
 import sqlite3
-import gzip
-import threading
 from multiprocessing import Queue, Process
 import logging
 
@@ -21,17 +19,17 @@ from settings import DEBUG
 
 from constants import (
     K_MER_SIZE,
+    FALSE_POSITIVE_RATE,
     NBR)
 
 if DEBUG:
     NUM_CPUS = 4
-    DB_OUTPUT_DIR = 'debug_db_nbr_{0}'.format(NBR)
+    DB_OUTPUT_DIR = 'debug_db/v2/nbr{0}'.format(NBR)
 else:
     NUM_CPUS = 32         # given 32 cores
-    DB_OUTPUT_DIR = 'db_nbr_{0}'.format(NBR)
+    DB_OUTPUT_DIR = 'db/v2/nbr{0}'.format(NBR)
 if not os.path.exists(DB_OUTPUT_DIR):
-    os.mkdir(DB_OUTPUT_DIR)
-
+    os.makedirs(DB_OUTPUT_DIR)
 
 
 if DEBUG:
@@ -58,7 +56,10 @@ SQL_CREATE_TABLE = """CREATE TABLE
 def generate_seqid_seqs():
     """return "a list of tuples of (seqid, seq)"""
 
-    input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
+    # v1
+    # input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
+    # v2
+    input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/comparison/genbank_db/filtered_gb_short_seq.csv.gz'
     logging.info('reading {0}'.format(input_))
     if DEBUG:
         df = pd.read_csv(input_, compression='gzip', nrows=1000)
@@ -67,16 +68,14 @@ def generate_seqid_seqs():
     logging.info('reading Done')
 
     seqs = df.seq.values
-    logging.info('Given {0} sequences: about 2x bloomfilters will be '
-                 'generated'.format(df.seq.shape[0]))
 
     # index each seq, 0-based index, ends up with tuples of (seq_id, seq)
     seqid_seqs = zip(xrange(len(seqs)), seqs)
     return seqid_seqs
 
 
-def calc_bf_size(n, p):
-    return - (n * np.log(p)) / (np.log(2) ** 2)
+# def calc_bf_size(n, p):
+#     return - (n * np.log(p)) / (np.log(2) ** 2)
 
 
 def calc_hash_count_and_bf_size(n, p):
@@ -101,9 +100,8 @@ def build_bf(id_seqs):
     calc_num_kmers = lambda seq: (len(seq) - K_MER_SIZE + 1)
     num_kmers = sum(calc_num_kmers(x[1]) for x in id_seqs)
 
-    prob = 0.0075
 
-    hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, prob)
+    hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, FALSE_POSITIVE_RATE)
     if DEBUG:
         logging.info('bf_size: {0} ({1})'.format(bf_size, pretty_usage(bf_size / 8.)))
         logging.info('hash_count: {0}'.format(hash_count))
@@ -206,6 +204,8 @@ def combine_db(db_dir):
         cursor.execute('attach "{0}" as toCombine'.format(db))
         cursor.execute('insert into bloomfilter select * from toCombine.bloomfilter'.format(db))
         cursor.execute('detach toCombine'.format(db))
+        # create index
+        cursor.execute('CREATE INDEX seq_id ON bloomfilter(seq_id)')
 
     conn.commit()
     conn.close()
