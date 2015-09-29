@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import os
 import time
-import bitarray
 import sqlite3
 import pandas as pd
 from multiprocessing import Manager, Value, Queue, Process, Lock
@@ -34,13 +33,13 @@ if DEBUG:
     NUM_CPUS = 4
     DB_OUTPUT_DIR = 'debug_db'
 else:
-    NUM_CPUS = 4         # given 32 cores
+    NUM_CPUS = 32               # given 32 cores
     DB_OUTPUT_DIR = 'db'
 if not os.path.exists(DB_OUTPUT_DIR):
     os.mkdir(DB_OUTPUT_DIR)
 
 
-NO_MATCH = 'no_match.txt'
+NO_MATCH = 'BALC7_no_match.txt'
 
 
 def load_bfs(db_file):
@@ -145,6 +144,7 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     if not cid_scores:
         hit.append(bf_id)
         if not bottom:
+            # SHOULD BE LOCKED
             with open(NO_MATCH, 'ab') as opf:
                 opf.write('{0}\n'.format(read))
         return
@@ -235,9 +235,9 @@ if __name__ == "__main__":
         os.remove(NO_MATCH)
 
     if DEBUG:
-        db_file = 'debug_db/combined.db'
+        db_file = 'debug_db/v2/nbr8/combined.db'
     else:
-        db_file = 'db/combined.db'
+        db_file = 'db/v2/nbr8/combined.db'
 
     # init shared variables among multiple processes
     # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
@@ -267,6 +267,9 @@ if __name__ == "__main__":
         fq_gzs = [
             '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_1.fq.gz',
             '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_2.fq.gz'
+
+            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561862_1.fq.gz',
+            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561862_2.fq.gz'
         ]
         input_reads = fetch_reads(*fq_gzs)
 
@@ -277,7 +280,6 @@ if __name__ == "__main__":
         if k_plus_1 <= next_freq:
             if k_plus_1 % freq == 0:
                 logging.info('enqueuing {0}th read'.format(k_plus_1))
-                logging.info(read)
         else:
             freq *= 10
             next_freq = freq * 10            
@@ -289,5 +291,5 @@ if __name__ == "__main__":
 
     df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'hit_count'])
     df.sort('hit_count', ascending=False, inplace=True)
-    df.to_csv('res_count.csv', index=False)
-
+    # df.to_csv('results/v2/SRR1561862.csv', index=False)
+    df.to_csv('results/v2/BALC7.csv', index=False)
