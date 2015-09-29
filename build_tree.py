@@ -45,12 +45,12 @@ SQL_CREATE_TABLE = """CREATE TABLE
     bloomfilter
     (bf_id INTEGER PRIMARY KEY,
      level INTEGER,
-    num_uniq_kmers INTEGER,
-    size INTEGER,
-    hash_count INTEGER,
-    fpr REAL,
-    bitarray BLOB,
-    seq_id)"""
+     num_uniq_kmers INTEGER,
+     size INTEGER,
+     hash_count INTEGER,
+     fpr REAL,
+     bitarray BLOB,
+     seq_id)"""
 
 
 def generate_seqid_seqs():
@@ -62,7 +62,7 @@ def generate_seqid_seqs():
     input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/comparison/genbank_db/filtered_gb_short_seq.csv.gz'
     logging.info('reading {0}'.format(input_))
     if DEBUG:
-        df = pd.read_csv(input_, compression='gzip', nrows=1000)
+        df = pd.read_csv(input_, compression='gzip', nrows=200)
     else:
         df = pd.read_csv(input_, compression='gzip')
     logging.info('reading Done')
@@ -204,8 +204,9 @@ def combine_db(db_dir):
         cursor.execute('attach "{0}" as toCombine'.format(db))
         cursor.execute('insert into bloomfilter select * from toCombine.bloomfilter'.format(db))
         cursor.execute('detach toCombine'.format(db))
-        # create index
-        cursor.execute('CREATE INDEX seq_id ON bloomfilter(seq_id)')
+
+    # create index
+    cursor.execute('CREATE INDEX seq_id ON bloomfilter(seq_id)')
 
     conn.commit()
     conn.close()
