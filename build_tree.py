@@ -16,18 +16,17 @@ from objs import BloomFilterBuilder
 
 from settings import DEBUG
 
+K_MER_SIZE = 20
+PRESET_FALSE_POSITIVE_RATE = 0.0075
+NBR = 8
 
-from constants import (
-    K_MER_SIZE,
-    FALSE_POSITIVE_RATE,
-    NBR)
 
 if DEBUG:
     NUM_CPUS = 4
-    DB_OUTPUT_DIR = 'debug_db/v2/nbr{0}'.format(NBR)
+    DB_OUTPUT_DIR = 'debug_db/v4/nbr{0}'.format(NBR)
 else:
     NUM_CPUS = 32         # given 32 cores
-    DB_OUTPUT_DIR = 'db/v2/nbr{0}'.format(NBR)
+    DB_OUTPUT_DIR = 'db/v4/nbr{0}'.format(NBR)
 if not os.path.exists(DB_OUTPUT_DIR):
     os.makedirs(DB_OUTPUT_DIR)
 
@@ -53,13 +52,8 @@ SQL_CREATE_TABLE = """CREATE TABLE
      seq_id)"""
 
 
-def generate_seqid_seqs():
+def generate_seqid_seqs(input_):
     """return "a list of tuples of (seqid, seq)"""
-
-    # v1
-    # input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
-    # v2
-    input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/comparison/genbank_db/filtered_gb_short_seq.csv.gz'
     logging.info('reading {0}'.format(input_))
     if DEBUG:
         df = pd.read_csv(input_, compression='gzip', nrows=200)
@@ -67,10 +61,8 @@ def generate_seqid_seqs():
         df = pd.read_csv(input_, compression='gzip')
     logging.info('reading Done')
 
-    seqs = df.seq.values
-
     # index each seq, 0-based index, ends up with tuples of (seq_id, seq)
-    seqid_seqs = zip(xrange(len(seqs)), seqs)
+    seqid_seqs = zip(df.seq_id.values, df.seq.values)
     return seqid_seqs
 
 
@@ -101,7 +93,7 @@ def build_bf(id_seqs):
     num_kmers = sum(calc_num_kmers(x[1]) for x in id_seqs)
 
 
-    hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, FALSE_POSITIVE_RATE)
+    hash_count, bf_size = calc_hash_count_and_bf_size(num_kmers, PRESET_FALSE_POSITIVE_RATE)
     if DEBUG:
         logging.info('bf_size: {0} ({1})'.format(bf_size, pretty_usage(bf_size / 8.)))
         logging.info('hash_count: {0}'.format(hash_count))
@@ -208,12 +200,32 @@ def combine_db(db_dir):
     # create index
     cursor.execute('CREATE INDEX seq_id ON bloomfilter(seq_id)')
 
+    # create metadata table
+
+    SQL_CREATE_METADATA_TABLE = """CREATE TABLE 
+        metadata
+        (k_mer_size INTEGER,
+         preset_fpr REAL,
+         nbr INTEGER)"""
+
+    cursor.execute(SQL_CREATE_METADATA_TABLE)
+
+    cursor.execute("INSERT INTO metadata values (?, ?, ?)",
+                   (K_MER_SIZE, PRESET_FALSE_POSITIVE_RATE, NBR))
+
     conn.commit()
     conn.close()
 
 
 def main():
-    seqid_seqs = generate_seqid_seqs()
+    # v1
+    # input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz'
+    # v2
+    # input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/comparison/genbank_db/filtered_gb_short_seq.csv.gz'
+    # v4
+    input_ = '/projects/btl2/zxue/microorganism_profiling/libraries_assesment/comparison/v4/silva_gg_rdp_unite_no_eukaryotes.csv.gz'
+
+    seqid_seqs = generate_seqid_seqs(input_)
     bfid_beg_end_generator = split_indexes(0, len(seqid_seqs), nbr=NBR)
 
     queue = Queue()
