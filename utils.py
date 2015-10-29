@@ -1,3 +1,5 @@
+import os
+import shutil
 import time
 import math                     # numpy log doesn't take arbitray base
 import numpy as np
@@ -38,6 +40,23 @@ def timeit(f):
         print "time spent on {0}: {1:.6f}s".format(f.func_name, et - bt)
         return r
     return new_f
+
+
+def backup_file(f):
+    if os.path.exists(f):
+        dirname = os.path.dirname(f)
+        basename = os.path.basename(f)
+        count = 1
+        rn_to = os.path.join(
+            dirname, '#' + basename + '.{0}#'.format(count))
+        while os.path.exists(rn_to):
+            count += 1
+            rn_to = os.path.join(
+                dirname, '#' + basename + '.{0}#'.format(count))
+        print "BACKING UP {0} to {1}".format(f, rn_to)
+        shutil.copy(f, rn_to)
+        return rn_to
+        print "BACKUP FINISHED"
 
 
 def pretty_usage(num):
