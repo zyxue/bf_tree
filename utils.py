@@ -175,7 +175,7 @@ def calc_level(cid, nbr=2):
     elif l > int(l):
         return int(l + 1)
     else:
-        raise ValueError('l < int(l) with l equals {0}'.format(r))
+        raise ValueError('l < int(l) with l equals {0}'.format(l))
 
 
 def calc_ith_node(cid, level=None, nbr=2):
