@@ -11,11 +11,11 @@ from Bio import SeqIO
 
 from objs import BloomFilter
 import utils as U
-from constants import (
-    K_MER_SIZE,
-    SCORE_CUTOFF,
-    NBR,
-    COMPLEMENT_DD)
+
+K_MER_SIZE = 20
+SCORE_CUTOFF = 0.5
+NBR = 8
+from constants import COMPLEMENT_DD
 
 import logging
 
@@ -39,7 +39,7 @@ if not os.path.exists(DB_OUTPUT_DIR):
     os.mkdir(DB_OUTPUT_DIR)
 
 
-NO_MATCH = 'BALC7_no_match.txt'
+NO_MATCH = 'results/v4/BALC7_no_match.txt'
 
 
 def load_bfs(db_file):
@@ -235,9 +235,9 @@ if __name__ == "__main__":
         os.remove(NO_MATCH)
 
     if DEBUG:
-        db_file = 'debug_db/v2/nbr8/combined.db'
+        db_file = 'debug_db/v4/nbr8/combined.db'
     else:
-        db_file = 'db/v2/nbr8/combined.db'
+        db_file = 'db/v4/nbr8/combined.db'
 
     # init shared variables among multiple processes
     # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
@@ -268,8 +268,8 @@ if __name__ == "__main__":
             '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_1.fq.gz',
             '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_2.fq.gz'
 
-            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561862_1.fq.gz',
-            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561862_2.fq.gz'
+            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561864_1.fq.gz',
+            # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561864_2.fq.gz'
         ]
         input_reads = fetch_reads(*fq_gzs)
 
@@ -291,5 +291,5 @@ if __name__ == "__main__":
 
     df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'hit_count'])
     df.sort('hit_count', ascending=False, inplace=True)
-    # df.to_csv('results/v2/SRR1561862.csv', index=False)
-    df.to_csv('results/v2/BALC7.csv', index=False)
+    df.to_csv('results/v4/BALC7.csv', index=False)
+    # df.to_csv('results/v4/SRR1561864.csv', index=False)
