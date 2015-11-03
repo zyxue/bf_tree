@@ -1,45 +1,22 @@
 from __future__ import unicode_literals
 
 import os
+import csv
 import time
 import sqlite3
+import random
 import pandas as pd
 from multiprocessing import Manager, Value, Queue, Process, Lock
 import gzip
+import logging
 
 from Bio import SeqIO
 
 from objs import BloomFilter
 import utils as U
-
-K_MER_SIZE = 20
-SCORE_CUTOFF = 0.5
-NBR = 8
 from constants import COMPLEMENT_DD
 
-import logging
-
 from settings import DEBUG
-
-if DEBUG:
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(asctime)s|%(levelname)s|%(message)s')
-else:
-    logging.basicConfig(level=logging.DEBUG,
-                        filename='categorize.log', filemode='w',
-                        format='%(asctime)s|%(levelname)s|%(message)s')
-
-if DEBUG:
-    NUM_CPUS = 4
-    DB_OUTPUT_DIR = 'debug_db'
-else:
-    NUM_CPUS = 32               # given 32 cores
-    DB_OUTPUT_DIR = 'db'
-if not os.path.exists(DB_OUTPUT_DIR):
-    os.mkdir(DB_OUTPUT_DIR)
-
-
-NO_MATCH = 'results/v4/BALC7_no_match.txt'
 
 
 def load_bfs(db_file):
@@ -95,22 +72,26 @@ def calc_score(read, k_mer_size, bf):
     return s
 
 
-def score(read, bf):
+def score(read, k_mer_size, bf):
+    """
+    read: should be a string, not SeqRecord
+    """
     f_read = read
     r_read = reverse_complement(f_read)
 
-    f_s = calc_score(f_read, K_MER_SIZE, bf)
-    r_s = calc_score(r_read, K_MER_SIZE, bf)
+    f_s = calc_score(f_read, k_mer_size, bf)
+    r_s = calc_score(r_read, k_mer_size, bf)
 
     # print f_s, r_s
     return max(f_s, r_s)
 
 
-def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
+def get_bf(read, bfs, nbr, k_mer_size, score_cutoff, hit, no_match_output,
+           bf_id=0, bf_score=0, level=0):
     """
     if calculated score < score_cutoff, then stop searching
 
-    :param hit: a list that whole hit bf_ids
+    :param hit: a list of tuples like (bf_id, score) storing result for this read
     """
 
     cids = U.calc_children_id(bf_id, level, nbr=nbr)
@@ -122,7 +103,7 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
     for cid in cids:
         if cid in bfs:
             bottom = False
-            _score = score(read, bfs[cid])
+            _score = score(str(read.seq), k_mer_size, bfs[cid])
             if _score > score_cutoff:
                 scores.append(_score)
             else:
@@ -142,45 +123,66 @@ def get_bf(read, bfs, nbr, score_cutoff, hit, bf_id=0, level=0):
 
     # bf_id is the bottom of the bfs tree or score is too low for all children bfs
     if not cid_scores:
-        hit.append(bf_id)
-        if not bottom:
-            # SHOULD BE LOCKED
-            with open(NO_MATCH, 'ab') as opf:
-                opf.write('{0}\n'.format(read))
+        if bottom:
+            hit.append((bf_id, bf_score))
+        # else:
+        #     with gzip.open(no_match_output, 'ab') as opf:
+        #         opf.write(read.format('fastq'))
         return
 
     # find cids with the SAME MAX scores
     max_score = 0
-    max_cids = []               # cids with max_scores
+    max_cid_scores = []               # cids with max_scores
     for (c, s) in cid_scores:
         if s >= max_score:
             if s > max_score:
                 max_score = s
-                max_cids = [c]
+                max_cid_scores = [(c, s)]
             else:
-                max_cids.append(c)
+                max_cid_scores.append((c, s))
 
-    for __ in max_cids:
-        get_bf(read, bfs, nbr, score_cutoff, hit, __, level)
-        return
+    for (bf_id, bf_score) in max_cid_scores:
+        get_bf(read, bfs, nbr, k_mer_size, score_cutoff, hit, no_match_output,
+               bf_id, bf_score, level)
+    return
 
 
-def worker(pid, queue, bfs, nbr, score_cutoff, res_count, lock):
+def output_res(res, output_file):
+    with gzip.open(output_file, 'ab') as opf:
+        csvwriter = csv.writer(opf)
+        csvwriter.writerows(res)
+
+
+def worker(pid, queue, lock, bfs, nbr, k_mer_size, score_cutoff, prefix, output_dir):
     score_cutoff = score_cutoff.value
-    res = {}                    # hold result for this process
+    score_output = os.path.join(output_dir, '{pid}_{prefix}_scores.csv.gz'.format(**locals()))
+    no_match_output = os.path.join(output_dir, '{pid}_{prefix}_no_match.fq.gz'.format(**locals()))
 
+    for _ in [score_output, no_match_output]:
+        if os.path.exists(_):
+            os.remove(_)
+
+    res = []      # hold list of (read_id, bf_id, score) as itermediate results
+
+
+    if DEBUG:
+        write_trigger = 1
+    else:
+        # to prevent multiple processes from writing to the disk simultaneously
+        write_trigger = random.randint(10000, 90000)
     counter = 0
     while True:
         read = queue.get()
         hit = []
 
-        get_bf(read, bfs, nbr, score_cutoff, hit)
+        get_bf(read, bfs, nbr, k_mer_size, score_cutoff, hit, no_match_output)
 
-        for bf_id in hit:
-            if bf_id in res:
-                res[bf_id] += 1
-            else:
-                res[bf_id] = 1
+        for (bf_id, score) in hit:
+            res.append((read.read_id, bf_id, score))
+
+        if len(res) > write_trigger:
+            output_res(res, score_output)
+            res = []
 
         counter += 1
         if DEBUG:
@@ -212,57 +214,34 @@ def worker(pid, queue, bfs, nbr, score_cutoff, res_count, lock):
                 logging.info('pid: {0}: still empty after {1}s wait for '
                              'the queue, break the while loop'.format(
                                  pid, total_seconds))
+
+                output_res(res, score_output)
                 break
 
-    with lock:
-        for k in res.keys():
-            if k in res_count.keys():
-                res_count[k] += res[k]
-            else:
-                res_count[k] = res[k]
 
 
 def fetch_reads(*fq_gzs):
+    count = 0
     for fq_gz in fq_gzs:
         logging.info('working on {0}'.format(fq_gz))
         with gzip.open(fq_gz) as inf:
             for rec in SeqIO.parse(inf, "fastq"):
-                yield str(rec.seq)
+                rec.read_id = count
+                count += 1
+                # yield str(rec.seq)
+                yield rec
 
 
 if __name__ == "__main__":
-    if os.path.exists(NO_MATCH):
-        os.remove(NO_MATCH)
+    # inputs include: 1, 2, 3 as shown belown
 
+    # 1. input fq files, output_dir (default to the same dir of fq files),
+    # prefix (drived from fq files or arbitrarily set), output file names
+    # (defined based on prefix and output_dir)
     if DEBUG:
-        db_file = 'debug_db/v4/nbr8/combined.db'
-    else:
-        db_file = 'db/v4/nbr8/combined.db'
-
-    # init shared variables among multiple processes
-    # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
-    score_cutoff = Value('d', SCORE_CUTOFF) # value is faster than manager
-    manager = Manager()
-    # bfs = manager.dict(load_bfs(db_file))
-    bfs = load_bfs(db_file)
-    res_count = manager.dict() # to hold results of a dictionary of (bf_id: count)
-    lock = Lock()
-
-    # init queue for input data 
-    queue = Queue()
-
-    # start multiple processes
-    procs = []
-    for pid in range(NUM_CPUS - 1):
-        proc = Process(target=worker, args=(pid, queue, bfs, NBR, score_cutoff,
-                                            res_count, lock))
-        proc.daemon = True
-        procs.append(proc)
-        proc.start()
-
-    if DEBUG:
-        from test_data import TEST_READS
-        input_reads = TEST_READS
+        fq_gzs = ['test_data.fq.gz']
+        prefix = 'test'
+        output_dir = os.path.join('debug_results/v4', prefix)
     else:
         fq_gzs = [
             '/projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_1.fq.gz',
@@ -270,8 +249,70 @@ if __name__ == "__main__":
 
             # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561864_1.fq.gz',
             # '/projects/btl2/zxue/microorganism_profiling/real/minnow/SRR1561864_2.fq.gz'
+
+            # '/projects/btl2/zxue/microorganism_profiling/simulation/org_set9.2_uniform_error/0.1/grinder/all_1.fq.gz',
+            # '/projects/btl2/zxue/microorganism_profiling/simulation/org_set9.2_uniform_error/0.1/grinder/all_2.fq.gz',
         ]
-        input_reads = fetch_reads(*fq_gzs)
+        prefix = 'BALC7'
+        # prefix = 'orgset9e0.1'
+        output_dir = os.path.join('results/v4', prefix)
+
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
+
+    input_reads = fetch_reads(*fq_gzs)
+
+
+    if DEBUG:
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(asctime)s|%(levelname)s|%(message)s')
+    else:
+        logging.basicConfig(level=logging.DEBUG,
+                            filename='categorize_{0}.log'.format(prefix), filemode='w',
+                            format='%(asctime)s|%(levelname)s|%(message)s')
+
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    output_no_match = os.path.join(output_dir, '{0}_no_match.fq'.format(prefix))
+
+
+    # 2. database of bloomfilters
+    if DEBUG:
+        db_file = 'debug_db/v4/nbr8/combined.db'
+    else:
+        db_file = 'db/v4/nbr8/combined.db'
+
+    # 3. configuration parameters
+    if DEBUG:
+        num_cpus = 4
+    else:
+        num_cpus = 32               # given 32 cores
+
+    score_cutoff = 0.5          # future: get from config
+    k_mer_size = 20             # future: get from db
+    nbr = 8                     # future: get from db
+
+
+    # init shared variables among multiple processes
+    # https://docs.python.org/2/library/multiprocessing.html#sharing-state-between-processes
+    score_cutoff = Value('d', score_cutoff) # value is faster than manager
+    manager = Manager()
+    # bfs = manager.dict(load_bfs(db_file))
+    bfs = load_bfs(db_file)
+    lock = Lock()
+
+    # init queue for input data 
+    queue = Queue()
+
+    # start multiple processes
+    procs = []
+    for pid in range(num_cpus - 1):
+        proc = Process(target=worker, args=(pid, queue, lock, bfs, nbr, k_mer_size,
+                                            score_cutoff, prefix, output_dir))
+        proc.daemon = True
+        procs.append(proc)
+        proc.start()
 
     # enqueue input data
     freq, next_freq = 1, 10
@@ -289,7 +330,7 @@ if __name__ == "__main__":
     for proc in procs:
         proc.join()
 
-    df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'hit_count'])
-    df.sort('hit_count', ascending=False, inplace=True)
-    df.to_csv('results/v4/BALC7.csv', index=False)
+    # df = pd.DataFrame.from_records(res_count.items(), columns=['bf_id', 'hit_count'])
+    # df.sort('hit_count', ascending=False, inplace=True)
+    # df.to_csv('results/v4/BALC7.csv', index=False)
     # df.to_csv('results/v4/SRR1561864.csv', index=False)
