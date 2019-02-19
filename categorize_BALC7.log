@@ -1,0 +1,529 @@
+2015-11-03 07:25:57,464|INFO|loading db/v4/nbr8/combined.db into memory
+2015-11-03 07:25:57,486|INFO|executing select bf_id, size, hash_count, bitarray from bloomfilter
+2015-11-03 07:26:04,359|INFO|building bfs
+2015-11-03 07:26:12,018|INFO|built 1 bfs
+2015-11-03 07:26:20,297|INFO|built 2 bfs
+2015-11-03 07:26:29,798|INFO|built 3 bfs
+2015-11-03 07:26:38,055|INFO|built 4 bfs
+2015-11-03 07:27:06,158|INFO|built 5 bfs
+2015-11-03 07:27:28,209|INFO|built 6 bfs
+2015-11-03 07:27:39,787|INFO|built 7 bfs
+2015-11-03 07:27:44,322|INFO|built 8 bfs
+2015-11-03 07:27:45,844|INFO|built 9 bfs
+2015-11-03 07:27:47,251|INFO|built 10 bfs
+2015-11-03 07:27:57,652|INFO|built 20 bfs
+2015-11-03 07:28:29,347|INFO|built 30 bfs
+2015-11-03 07:28:49,788|INFO|built 40 bfs
+2015-11-03 07:29:04,798|INFO|built 50 bfs
+2015-11-03 07:29:33,965|INFO|built 60 bfs
+2015-11-03 07:30:24,378|INFO|built 70 bfs
+2015-11-03 07:30:26,426|INFO|built 80 bfs
+2015-11-03 07:30:27,780|INFO|built 90 bfs
+2015-11-03 07:30:30,802|INFO|built 100 bfs
+2015-11-03 07:30:58,298|INFO|built 200 bfs
+2015-11-03 07:31:41,344|INFO|built 300 bfs
+2015-11-03 07:32:14,298|INFO|built 400 bfs
+2015-11-03 07:32:34,147|INFO|built 500 bfs
+2015-11-03 07:32:50,532|INFO|built 600 bfs
+2015-11-03 07:32:51,880|INFO|built 700 bfs
+2015-11-03 07:32:53,188|INFO|built 800 bfs
+2015-11-03 07:32:54,148|INFO|built 900 bfs
+2015-11-03 07:32:55,413|INFO|built 1000 bfs
+2015-11-03 07:33:07,331|INFO|built 2000 bfs
+2015-11-03 07:33:20,673|INFO|built 3000 bfs
+2015-11-03 07:33:30,981|INFO|built 4000 bfs
+2015-11-03 07:33:40,168|INFO|built 5000 bfs
+2015-11-03 07:33:41,738|INFO|built 6000 bfs
+2015-11-03 07:33:42,947|INFO|built 7000 bfs
+2015-11-03 07:33:44,390|INFO|built 8000 bfs
+2015-11-03 07:33:45,850|INFO|built 9000 bfs
+2015-11-03 07:33:47,289|INFO|built 10000 bfs
+2015-11-03 07:34:03,114|INFO|built 20000 bfs
+2015-11-03 07:34:16,712|INFO|built 30000 bfs
+2015-11-03 07:34:27,212|INFO|built 40000 bfs
+2015-11-03 07:34:29,164|INFO|built 50000 bfs
+2015-11-03 07:34:30,706|INFO|built 60000 bfs
+2015-11-03 07:34:32,735|INFO|built 70000 bfs
+2015-11-03 07:34:34,730|INFO|built 80000 bfs
+2015-11-03 07:34:36,498|INFO|built 90000 bfs
+2015-11-03 07:34:38,379|INFO|built 100000 bfs
+2015-11-03 07:34:58,372|INFO|built 200000 bfs
+2015-11-03 07:35:15,500|INFO|built 300000 bfs
+2015-11-03 07:35:19,414|INFO|built 400000 bfs
+2015-11-03 07:35:22,036|INFO|built 500000 bfs
+2015-11-03 07:35:25,089|INFO|built 600000 bfs
+2015-11-03 07:35:36,564|INFO|built 700000 bfs
+2015-11-03 07:35:39,336|INFO|built 800000 bfs
+2015-11-03 07:35:42,357|INFO|built 900000 bfs
+2015-11-03 07:35:44,683|INFO|built 1000000 bfs
+2015-11-03 07:36:44,497|INFO|built 2000000 bfs
+2015-11-03 07:37:24,009|INFO|built 3000000 bfs
+2015-11-03 07:37:39,361|INFO|built 4000000 bfs
+2015-11-03 07:37:57,373|INFO|built 5000000 bfs
+2015-11-03 07:38:49,935|INFO|built 6000000 bfs
+2015-11-03 07:39:10,032|INFO|built 6987677th bfs in total
+2015-11-03 07:39:10,034|INFO|loading is done
+2015-11-03 07:39:29,774|INFO|working on /projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_1.fq.gz
+2015-11-03 07:39:30,038|INFO|enqueuing 1th read
+2015-11-03 07:39:30,039|INFO|enqueuing 2th read
+2015-11-03 07:39:30,040|INFO|enqueuing 3th read
+2015-11-03 07:39:30,040|INFO|enqueuing 4th read
+2015-11-03 07:39:30,041|INFO|enqueuing 5th read
+2015-11-03 07:39:30,041|INFO|enqueuing 6th read
+2015-11-03 07:39:30,041|INFO|enqueuing 7th read
+2015-11-03 07:39:30,041|INFO|enqueuing 8th read
+2015-11-03 07:39:30,041|INFO|enqueuing 9th read
+2015-11-03 07:39:30,042|INFO|enqueuing 10th read
+2015-11-03 07:39:30,043|INFO|enqueuing 20th read
+2015-11-03 07:39:30,044|INFO|enqueuing 30th read
+2015-11-03 07:39:30,046|INFO|enqueuing 40th read
+2015-11-03 07:39:30,047|INFO|enqueuing 50th read
+2015-11-03 07:39:30,051|INFO|enqueuing 60th read
+2015-11-03 07:39:30,055|INFO|enqueuing 70th read
+2015-11-03 07:39:30,059|INFO|enqueuing 80th read
+2015-11-03 07:39:30,062|INFO|enqueuing 90th read
+2015-11-03 07:39:30,064|INFO|enqueuing 100th read
+2015-11-03 07:39:30,076|INFO|enqueuing 200th read
+2015-11-03 07:39:30,089|INFO|enqueuing 300th read
+2015-11-03 07:39:30,104|INFO|enqueuing 400th read
+2015-11-03 07:39:30,117|INFO|enqueuing 500th read
+2015-11-03 07:39:30,128|INFO|enqueuing 600th read
+2015-11-03 07:39:30,141|INFO|enqueuing 700th read
+2015-11-03 07:39:30,153|INFO|enqueuing 800th read
+2015-11-03 07:39:30,163|INFO|enqueuing 900th read
+2015-11-03 07:39:30,178|INFO|enqueuing 1000th read
+2015-11-03 07:39:30,287|INFO|enqueuing 2000th read
+2015-11-03 07:39:30,398|INFO|enqueuing 3000th read
+2015-11-03 07:39:30,507|INFO|enqueuing 4000th read
+2015-11-03 07:39:30,709|INFO|enqueuing 5000th read
+2015-11-03 07:39:31,894|INFO|enqueuing 6000th read
+2015-11-03 07:39:32,008|INFO|enqueuing 7000th read
+2015-11-03 07:39:32,105|INFO|enqueuing 8000th read
+2015-11-03 07:39:32,207|INFO|enqueuing 9000th read
+2015-11-03 07:39:32,303|INFO|enqueuing 10000th read
+2015-11-03 07:39:33,646|INFO|enqueuing 20000th read
+2015-11-03 07:39:35,066|INFO|pid: 26: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,085|INFO|pid: 9: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,086|INFO|pid: 4: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,093|INFO|pid: 27: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,093|INFO|pid: 10: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,100|INFO|pid: 30: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,103|INFO|pid: 20: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,108|INFO|pid: 8: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,109|INFO|pid: 29: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,114|INFO|pid: 11: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,118|INFO|pid: 28: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,123|INFO|pid: 19: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,130|INFO|pid: 25: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,133|INFO|pid: 13: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,144|INFO|pid: 5: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,161|INFO|pid: 24: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,181|INFO|pid: 0: waiting 1s for queue to be non-empty
+2015-11-03 07:39:35,219|INFO|pid: 22: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,068|INFO|pid: 26: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,087|INFO|pid: 9: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,094|INFO|pid: 10: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,101|INFO|pid: 30: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,105|INFO|pid: 20: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,108|INFO|pid: 4: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,110|INFO|pid: 29: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,114|INFO|pid: 11: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,119|INFO|pid: 28: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,125|INFO|pid: 19: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,131|INFO|pid: 25: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,134|INFO|pid: 13: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,145|INFO|pid: 5: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,163|INFO|pid: 24: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,183|INFO|pid: 0: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,221|INFO|pid: 22: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,265|INFO|pid: 8: waiting 2s for queue to be non-empty
+2015-11-03 07:39:36,567|INFO|pid: 23: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,685|INFO|pid: 17: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,783|INFO|pid: 6: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,794|INFO|pid: 12: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,827|INFO|pid: 14: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,835|INFO|pid: 3: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,875|INFO|pid: 2: waiting 1s for queue to be non-empty
+2015-11-03 07:39:36,930|INFO|pid: 16: waiting 1s for queue to be non-empty
+2015-11-03 07:39:37,144|INFO|pid: 21: waiting 1s for queue to be non-empty
+2015-11-03 07:39:37,180|INFO|pid: 7: waiting 1s for queue to be non-empty
+2015-11-03 07:39:37,240|INFO|pid: 1: waiting 1s for queue to be non-empty
+2015-11-03 07:39:37,569|INFO|pid: 23: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,687|INFO|pid: 17: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,783|INFO|pid: 6: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,795|INFO|pid: 12: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,828|INFO|pid: 14: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,837|INFO|pid: 3: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,876|INFO|pid: 2: waiting 2s for queue to be non-empty
+2015-11-03 07:39:37,932|INFO|pid: 16: waiting 2s for queue to be non-empty
+2015-11-03 07:39:38,070|INFO|pid: 26: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,089|INFO|pid: 9: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,096|INFO|pid: 27: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,097|INFO|pid: 10: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,104|INFO|pid: 30: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,106|INFO|pid: 20: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,109|INFO|pid: 4: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,112|INFO|pid: 29: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,116|INFO|pid: 11: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,121|INFO|pid: 15: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,133|INFO|pid: 25: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,137|INFO|pid: 13: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,144|INFO|pid: 21: waiting 2s for queue to be non-empty
+2015-11-03 07:39:38,148|INFO|pid: 5: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,165|INFO|pid: 24: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,181|INFO|pid: 7: waiting 2s for queue to be non-empty
+2015-11-03 07:39:38,184|INFO|pid: 0: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,222|INFO|pid: 22: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,241|INFO|pid: 1: waiting 2s for queue to be non-empty
+2015-11-03 07:39:38,274|INFO|pid: 19: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,287|INFO|pid: 8: waiting 3s for queue to be non-empty
+2015-11-03 07:39:38,479|INFO|enqueuing 30000th read
+2015-11-03 07:39:39,099|INFO|enqueuing 40000th read
+2015-11-03 07:39:39,571|INFO|pid: 23: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,688|INFO|pid: 17: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,747|INFO|enqueuing 50000th read
+2015-11-03 07:39:39,786|INFO|pid: 6: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,797|INFO|pid: 12: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,830|INFO|pid: 14: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,838|INFO|pid: 3: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,877|INFO|pid: 2: more tasks found after 3s wait, back to work
+2015-11-03 07:39:39,933|INFO|pid: 16: more tasks found after 3s wait, back to work
+2015-11-03 07:39:40,146|INFO|pid: 21: more tasks found after 3s wait, back to work
+2015-11-03 07:39:40,183|INFO|pid: 7: more tasks found after 3s wait, back to work
+2015-11-03 07:39:40,243|INFO|pid: 1: more tasks found after 3s wait, back to work
+2015-11-03 07:39:40,685|INFO|enqueuing 60000th read
+2015-11-03 07:39:41,073|INFO|pid: 26: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,092|INFO|pid: 9: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,099|INFO|pid: 10: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,099|INFO|pid: 27: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,106|INFO|pid: 30: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,109|INFO|pid: 20: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,112|INFO|pid: 4: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,115|INFO|pid: 29: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,119|INFO|pid: 11: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,124|INFO|pid: 28: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,136|INFO|pid: 25: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,139|INFO|pid: 13: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,150|INFO|pid: 5: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,167|INFO|pid: 24: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,187|INFO|pid: 0: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,225|INFO|pid: 22: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,276|INFO|pid: 19: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,290|INFO|pid: 8: more tasks found after 6s wait, back to work
+2015-11-03 07:39:41,575|INFO|enqueuing 70000th read
+2015-11-03 07:39:42,584|INFO|enqueuing 80000th read
+2015-11-03 07:39:43,498|INFO|enqueuing 90000th read
+2015-11-03 07:39:44,430|INFO|enqueuing 100000th read
+2015-11-03 07:39:53,746|INFO|enqueuing 200000th read
+2015-11-03 07:40:02,839|INFO|enqueuing 300000th read
+2015-11-03 07:40:08,739|INFO|pid: 16: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,742|INFO|pid: 21: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,743|INFO|pid: 15: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,744|INFO|pid: 14: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,745|INFO|pid: 20: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,746|INFO|pid: 9: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,746|INFO|pid: 17: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,747|INFO|pid: 8: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,748|INFO|pid: 0: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,750|INFO|pid: 25: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,750|INFO|pid: 29: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,750|INFO|pid: 23: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,753|INFO|pid: 30: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,759|INFO|pid: 5: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,768|INFO|pid: 2: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,769|INFO|pid: 11: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,771|INFO|pid: 22: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,774|INFO|pid: 26: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,780|INFO|pid: 27: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,784|INFO|pid: 4: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,785|INFO|pid: 7: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,786|INFO|pid: 19: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,787|INFO|pid: 3: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,790|INFO|pid: 1: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,792|INFO|pid: 24: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,792|INFO|pid: 13: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,798|INFO|pid: 28: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,810|INFO|pid: 18: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,818|INFO|pid: 6: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,836|INFO|pid: 12: waiting 1s for queue to be non-empty
+2015-11-03 07:40:08,843|INFO|pid: 10: waiting 1s for queue to be non-empty
+2015-11-03 07:40:09,739|INFO|pid: 16: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,743|INFO|pid: 21: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,743|INFO|pid: 15: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,744|INFO|pid: 14: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,745|INFO|pid: 20: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,747|INFO|pid: 9: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,747|INFO|pid: 17: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,748|INFO|pid: 8: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,749|INFO|pid: 0: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,750|INFO|pid: 25: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,750|INFO|pid: 29: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,751|INFO|pid: 23: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,754|INFO|pid: 30: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,760|INFO|pid: 5: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,769|INFO|pid: 2: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,770|INFO|pid: 11: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,772|INFO|pid: 22: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,775|INFO|pid: 26: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,781|INFO|pid: 27: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,784|INFO|pid: 4: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,786|INFO|pid: 19: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,786|INFO|pid: 7: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,787|INFO|pid: 3: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,791|INFO|pid: 1: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,793|INFO|pid: 24: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,794|INFO|pid: 13: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,798|INFO|pid: 28: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,811|INFO|pid: 18: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,818|INFO|pid: 6: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,837|INFO|pid: 12: waiting 2s for queue to be non-empty
+2015-11-03 07:40:09,843|INFO|pid: 10: waiting 2s for queue to be non-empty
+2015-11-03 07:40:11,742|INFO|pid: 16: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,745|INFO|pid: 21: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,746|INFO|pid: 15: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,747|INFO|pid: 14: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,748|INFO|pid: 20: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,750|INFO|pid: 9: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,750|INFO|pid: 17: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,751|INFO|pid: 8: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,752|INFO|pid: 0: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,752|INFO|pid: 25: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,753|INFO|pid: 29: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,754|INFO|pid: 23: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,757|INFO|pid: 30: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,763|INFO|pid: 5: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,771|INFO|pid: 2: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,772|INFO|pid: 11: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,775|INFO|pid: 22: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,778|INFO|pid: 26: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,784|INFO|pid: 27: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,787|INFO|pid: 4: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,789|INFO|pid: 19: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,789|INFO|pid: 7: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,790|INFO|pid: 3: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,794|INFO|pid: 1: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,796|INFO|pid: 24: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,796|INFO|pid: 13: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,801|INFO|pid: 28: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,814|INFO|pid: 18: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,821|INFO|pid: 6: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,840|INFO|pid: 12: waiting 3s for queue to be non-empty
+2015-11-03 07:40:11,844|INFO|pid: 10: waiting 3s for queue to be non-empty
+2015-11-03 07:40:14,744|INFO|pid: 16: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,748|INFO|pid: 15: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,748|INFO|pid: 21: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,750|INFO|pid: 14: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,751|INFO|pid: 20: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,752|INFO|pid: 9: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,752|INFO|pid: 17: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,753|INFO|pid: 8: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,755|INFO|pid: 0: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,755|INFO|pid: 25: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,756|INFO|pid: 29: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,756|INFO|pid: 23: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,759|INFO|pid: 30: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,766|INFO|pid: 5: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,775|INFO|pid: 2: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,775|INFO|pid: 11: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,777|INFO|pid: 22: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,780|INFO|pid: 26: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,786|INFO|pid: 27: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,789|INFO|pid: 4: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,791|INFO|pid: 7: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,792|INFO|pid: 3: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,796|INFO|pid: 1: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,799|INFO|pid: 24: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,799|INFO|pid: 13: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,804|INFO|pid: 28: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,816|INFO|pid: 18: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,823|INFO|pid: 6: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,842|INFO|pid: 12: waiting 4s for queue to be non-empty
+2015-11-03 07:40:14,846|INFO|pid: 10: waiting 4s for queue to be non-empty
+2015-11-03 07:40:18,748|INFO|pid: 16: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,752|INFO|pid: 15: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,754|INFO|pid: 14: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,754|INFO|pid: 20: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,756|INFO|pid: 9: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,756|INFO|pid: 17: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,757|INFO|pid: 8: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,759|INFO|pid: 25: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,759|INFO|pid: 29: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,760|INFO|pid: 23: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,763|INFO|pid: 30: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,767|INFO|pid: 0: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,770|INFO|pid: 5: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,778|INFO|pid: 2: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,779|INFO|pid: 11: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,781|INFO|pid: 22: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,784|INFO|pid: 26: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,790|INFO|pid: 27: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,793|INFO|pid: 4: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,795|INFO|pid: 19: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,796|INFO|pid: 3: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,800|INFO|pid: 1: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,802|INFO|pid: 24: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,803|INFO|pid: 13: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,807|INFO|pid: 28: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,820|INFO|pid: 18: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,827|INFO|pid: 6: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,846|INFO|pid: 12: more tasks found after 10s wait, back to work
+2015-11-03 07:40:18,849|INFO|pid: 10: more tasks found after 10s wait, back to work
+2015-11-03 07:40:21,473|INFO|enqueuing 400000th read
+2015-11-03 07:40:30,612|INFO|enqueuing 500000th read
+2015-11-03 07:40:39,579|INFO|enqueuing 600000th read
+2015-11-03 07:40:48,521|INFO|enqueuing 700000th read
+2015-11-03 07:40:57,698|INFO|enqueuing 800000th read
+2015-11-03 07:41:06,443|INFO|working on /projects/btl2/zxue/microorganism_profiling/real/BALC7.Clinical/reads_2.fq.gz
+2015-11-03 07:41:06,876|INFO|enqueuing 900000th read
+2015-11-03 07:41:15,945|INFO|enqueuing 1000000th read
+2015-11-03 07:41:27,903|INFO|pid: 9: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,911|INFO|pid: 10: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,912|INFO|pid: 22: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,915|INFO|pid: 16: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,917|INFO|pid: 14: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,923|INFO|pid: 24: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,930|INFO|pid: 8: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,930|INFO|pid: 15: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,935|INFO|pid: 27: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,935|INFO|pid: 30: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,935|INFO|pid: 7: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,936|INFO|pid: 19: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,937|INFO|pid: 20: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,938|INFO|pid: 17: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,942|INFO|pid: 18: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,960|INFO|pid: 23: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,961|INFO|pid: 4: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,962|INFO|pid: 0: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,963|INFO|pid: 26: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,964|INFO|pid: 12: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,965|INFO|pid: 29: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,967|INFO|pid: 11: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,970|INFO|pid: 13: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,972|INFO|pid: 6: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,974|INFO|pid: 5: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,975|INFO|pid: 1: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,976|INFO|pid: 21: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,988|INFO|pid: 25: waiting 1s for queue to be non-empty
+2015-11-03 07:41:27,994|INFO|pid: 2: waiting 1s for queue to be non-empty
+2015-11-03 07:41:28,005|INFO|pid: 3: waiting 1s for queue to be non-empty
+2015-11-03 07:41:28,903|INFO|pid: 28: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,911|INFO|pid: 10: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,912|INFO|pid: 22: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,916|INFO|pid: 16: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,917|INFO|pid: 14: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,924|INFO|pid: 24: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,931|INFO|pid: 8: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,931|INFO|pid: 15: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,935|INFO|pid: 30: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,936|INFO|pid: 27: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,936|INFO|pid: 7: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,937|INFO|pid: 20: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,938|INFO|pid: 17: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,943|INFO|pid: 18: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,960|INFO|pid: 23: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,962|INFO|pid: 4: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,963|INFO|pid: 0: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,964|INFO|pid: 12: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,964|INFO|pid: 26: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,965|INFO|pid: 29: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,968|INFO|pid: 11: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,970|INFO|pid: 13: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,974|INFO|pid: 6: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,975|INFO|pid: 1: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,976|INFO|pid: 5: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,976|INFO|pid: 21: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,989|INFO|pid: 25: waiting 2s for queue to be non-empty
+2015-11-03 07:41:28,994|INFO|pid: 2: waiting 2s for queue to be non-empty
+2015-11-03 07:41:29,006|INFO|pid: 3: waiting 2s for queue to be non-empty
+2015-11-03 07:41:30,905|INFO|pid: 28: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,906|INFO|pid: 9: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,914|INFO|pid: 10: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,914|INFO|pid: 22: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,918|INFO|pid: 16: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,920|INFO|pid: 14: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,927|INFO|pid: 24: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,932|INFO|pid: 8: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,934|INFO|pid: 15: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,937|INFO|pid: 30: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,938|INFO|pid: 19: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,938|INFO|pid: 7: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,939|INFO|pid: 20: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,940|INFO|pid: 17: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,945|INFO|pid: 18: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,963|INFO|pid: 23: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,964|INFO|pid: 4: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,965|INFO|pid: 0: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,966|INFO|pid: 26: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,966|INFO|pid: 12: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,967|INFO|pid: 29: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,971|INFO|pid: 11: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,972|INFO|pid: 13: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,975|INFO|pid: 6: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,977|INFO|pid: 1: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,978|INFO|pid: 5: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,978|INFO|pid: 21: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,990|INFO|pid: 25: waiting 3s for queue to be non-empty
+2015-11-03 07:41:30,996|INFO|pid: 2: waiting 3s for queue to be non-empty
+2015-11-03 07:41:31,008|INFO|pid: 3: waiting 3s for queue to be non-empty
+2015-11-03 07:41:33,908|INFO|pid: 28: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,909|INFO|pid: 9: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,917|INFO|pid: 10: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,917|INFO|pid: 22: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,921|INFO|pid: 16: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,923|INFO|pid: 14: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,930|INFO|pid: 24: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,935|INFO|pid: 8: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,936|INFO|pid: 15: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,940|INFO|pid: 30: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,941|INFO|pid: 19: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,941|INFO|pid: 7: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,942|INFO|pid: 20: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,943|INFO|pid: 17: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,948|INFO|pid: 18: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,966|INFO|pid: 23: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,967|INFO|pid: 4: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,968|INFO|pid: 0: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,969|INFO|pid: 12: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,969|INFO|pid: 26: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,970|INFO|pid: 29: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,974|INFO|pid: 11: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,975|INFO|pid: 13: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,978|INFO|pid: 6: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,980|INFO|pid: 1: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,980|INFO|pid: 5: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,981|INFO|pid: 21: waiting 4s for queue to be non-empty
+2015-11-03 07:41:33,994|INFO|pid: 25: waiting 4s for queue to be non-empty
+2015-11-03 07:41:34,000|INFO|pid: 2: waiting 4s for queue to be non-empty
+2015-11-03 07:41:34,012|INFO|pid: 3: waiting 4s for queue to be non-empty
+2015-11-03 07:41:37,912|INFO|pid: 28: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,913|INFO|pid: 9: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,920|INFO|pid: 10: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,922|INFO|pid: 22: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,925|INFO|pid: 16: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,926|INFO|pid: 14: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,935|INFO|pid: 24: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,939|INFO|pid: 15: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,939|INFO|pid: 8: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,944|INFO|pid: 30: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,945|INFO|pid: 27: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,945|INFO|pid: 19: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,945|INFO|pid: 7: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,946|INFO|pid: 20: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,947|INFO|pid: 17: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,952|INFO|pid: 18: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,969|INFO|pid: 23: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,971|INFO|pid: 4: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,972|INFO|pid: 0: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,973|INFO|pid: 12: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,973|INFO|pid: 26: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,974|INFO|pid: 29: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,978|INFO|pid: 11: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,979|INFO|pid: 13: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,982|INFO|pid: 6: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,984|INFO|pid: 5: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,985|INFO|pid: 21: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,989|INFO|pid: 1: more tasks found after 10s wait, back to work
+2015-11-03 07:41:37,998|INFO|pid: 25: more tasks found after 10s wait, back to work
+2015-11-03 07:41:38,003|INFO|pid: 2: more tasks found after 10s wait, back to work
+2015-11-03 07:41:38,016|INFO|pid: 3: more tasks found after 10s wait, back to work
+2015-11-03 07:42:42,147|INFO|enqueued 1794432 reads in total

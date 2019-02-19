@@ -1,0 +1,5 @@
+Not sure when using Queue.Queue(), CPU usage is low, maybe due to complex
+memory operation?
+
+
+set() huge list takes a significant amount of time and memory

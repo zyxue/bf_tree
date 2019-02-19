@@ -1,0 +1,1026 @@
+2015-09-16 08:19:46,713|INFO|reading /projects/btl2/zxue/microorganism_profiling/libraries_assesment/gg_unite/gg_unite.csv.gz
+2015-09-16 08:19:46,727|INFO|reading Done
+2015-09-16 08:19:46,727|INFO|Given 100 sequences: about 2x bloomfilters will be generated
+2015-09-16 08:19:46,852|INFO|enqueuing 1th bf
+2015-09-16 08:19:46,853|INFO|connecting to db...
+2015-09-16 08:19:46,853|INFO|enqueuing 2th bf
+2015-09-16 08:19:46,853|INFO|enqueuing 3th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 4th bf
+2015-09-16 08:19:46,853|INFO|connecting to db...
+2015-09-16 08:19:46,854|INFO|enqueuing 5th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 6th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 7th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 8th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 9th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 10th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 20th bf
+2015-09-16 08:19:46,854|INFO|connecting to db...
+2015-09-16 08:19:46,854|INFO|enqueuing 30th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 40th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 50th bf
+2015-09-16 08:19:46,854|INFO|enqueuing 60th bf
+2015-09-16 08:19:46,855|INFO|enqueuing 70th bf
+2015-09-16 08:19:46,855|INFO|enqueuing 80th bf
+2015-09-16 08:19:46,855|INFO|enqueuing 90th bf
+2015-09-16 08:19:46,855|INFO|enqueuing 100th bf
+2015-09-16 08:19:46,855|INFO|enqueued 198th bf
+2015-09-16 08:19:46,875|INFO|bf_size: 199572 (24.4 KB)
+2015-09-16 08:19:46,875|INFO|hash_count: 7
+2015-09-16 08:19:46,876|INFO|bf_size: 194887 (23.8 KB)
+2015-09-16 08:19:46,876|INFO|hash_count: 7
+2015-09-16 08:19:46,879|INFO|bf_size: 100656 (12.3 KB)
+2015-09-16 08:19:46,879|INFO|hash_count: 7
+2015-09-16 08:19:46,921|INFO|Total number of kmers: 9884
+2015-09-16 08:19:46,921|INFO|Number of uniq kmers: 7047
+2015-09-16 08:19:46,921|INFO|Real false positive rate: 0.00131003516212
+2015-09-16 08:19:46,927|INFO|bf_size: 98915 (12.1 KB)
+2015-09-16 08:19:46,927|INFO|hash_count: 7
+2015-09-16 08:19:46,969|INFO|Total number of kmers: 9713
+2015-09-16 08:19:46,969|INFO|Number of uniq kmers: 6488
+2015-09-16 08:19:46,969|INFO|Real false positive rate: 0.000917035730484
+2015-09-16 08:19:46,969|INFO|bf_size: 50165 (6.1 KB)
+2015-09-16 08:19:46,969|INFO|hash_count: 7
+2015-09-16 08:19:46,991|INFO|Total number of kmers: 4926
+2015-09-16 08:19:46,991|INFO|Number of uniq kmers: 3786
+2015-09-16 08:19:46,991|INFO|Real false positive rate: 0.00196070353927
+2015-09-16 08:19:46,991|INFO|bf_size: 50491 (6.2 KB)
+2015-09-16 08:19:46,991|INFO|hash_count: 7
+2015-09-16 08:19:47,009|INFO|Total number of kmers: 19137
+2015-09-16 08:19:47,009|INFO|Number of uniq kmers: 11024
+2015-09-16 08:19:47,009|INFO|Real false positive rate: 0.000399526445443
+2015-09-16 08:19:47,011|INFO|Total number of kmers: 19597
+2015-09-16 08:19:47,011|INFO|Number of uniq kmers: 12641
+2015-09-16 08:19:47,011|INFO|Real false positive rate: 0.000755734374442
+2015-09-16 08:19:47,013|INFO|Total number of kmers: 4958
+2015-09-16 08:19:47,013|INFO|Number of uniq kmers: 3731
+2015-09-16 08:19:47,013|INFO|Real false positive rate: 0.00175207438729
+2015-09-16 08:19:47,013|INFO|bf_size: 26936 (3.3 KB)
+2015-09-16 08:19:47,013|INFO|hash_count: 7
+2015-09-16 08:19:47,014|INFO|bf_size: 23229 (2.8 KB)
+2015-09-16 08:19:47,014|INFO|hash_count: 7
+2015-09-16 08:19:47,016|INFO|bf_size: 15438 (1.9 KB)
+2015-09-16 08:19:47,016|INFO|hash_count: 7
+2015-09-16 08:19:47,024|INFO|Total number of kmers: 2645
+2015-09-16 08:19:47,024|INFO|Number of uniq kmers: 2123
+2015-09-16 08:19:47,024|INFO|Real false positive rate: 0.00246537093753
+2015-09-16 08:19:47,025|INFO|bf_size: 11497 (1.4 KB)
+2015-09-16 08:19:47,025|INFO|hash_count: 7
+2015-09-16 08:19:47,027|INFO|Total number of kmers: 1516
+2015-09-16 08:19:47,027|INFO|Number of uniq kmers: 1446
+2015-09-16 08:19:47,027|INFO|Real false positive rate: 0.00594895198085
+2015-09-16 08:19:47,027|INFO|bf_size: 7810 (976.2 bytes)
+2015-09-16 08:19:47,027|INFO|hash_count: 7
+2015-09-16 08:19:47,028|INFO|Total number of kmers: 2281
+2015-09-16 08:19:47,028|INFO|Number of uniq kmers: 1925
+2015-09-16 08:19:47,028|INFO|Real false positive rate: 0.00320097344877
+2015-09-16 08:19:47,028|INFO|bf_size: 7627 (953.4 bytes)
+2015-09-16 08:19:47,028|INFO|hash_count: 7
+2015-09-16 08:19:47,030|INFO|Total number of kmers: 1129
+2015-09-16 08:19:47,030|INFO|Number of uniq kmers: 725
+2015-09-16 08:19:47,030|INFO|Real false positive rate: 0.00073745629525
+2015-09-16 08:19:47,030|INFO|bf_size: 3880 (485.0 bytes)
+2015-09-16 08:19:47,030|INFO|hash_count: 7
+2015-09-16 08:19:47,030|INFO|Total number of kmers: 767
+2015-09-16 08:19:47,030|INFO|Number of uniq kmers: 766
+2015-09-16 08:19:47,030|INFO|Real false positive rate: 0.00746026001427
+2015-09-16 08:19:47,030|INFO|bf_size: 3747 (468.4 bytes)
+2015-09-16 08:19:47,031|INFO|hash_count: 7
+2015-09-16 08:19:47,031|INFO|Total number of kmers: 381
+2015-09-16 08:19:47,031|INFO|Number of uniq kmers: 381
+2015-09-16 08:19:47,032|INFO|Real false positive rate: 0.00750586805169
+2015-09-16 08:19:47,032|INFO|bf_size: 3818 (477.2 bytes)
+2015-09-16 08:19:47,032|INFO|hash_count: 7
+2015-09-16 08:19:47,032|INFO|Total number of kmers: 749
+2015-09-16 08:19:47,032|INFO|Number of uniq kmers: 681
+2015-09-16 08:19:47,032|INFO|Real false positive rate: 0.0046844853084
+2015-09-16 08:19:47,032|INFO|bf_size: 7678 (959.8 bytes)
+2015-09-16 08:19:47,032|INFO|hash_count: 7
+2015-09-16 08:19:47,032|INFO|Total number of kmers: 368
+2015-09-16 08:19:47,032|INFO|Number of uniq kmers: 368
+2015-09-16 08:19:47,032|INFO|Real false positive rate: 0.00751199978433
+2015-09-16 08:19:47,032|INFO|bf_size: 3849 (481.1 bytes)
+2015-09-16 08:19:47,032|INFO|hash_count: 7
+2015-09-16 08:19:47,033|INFO|Total number of kmers: 375
+2015-09-16 08:19:47,033|INFO|Number of uniq kmers: 374
+2015-09-16 08:19:47,033|INFO|Real false positive rate: 0.0074174615138
+2015-09-16 08:19:47,034|INFO|bf_size: 3829 (478.6 bytes)
+2015-09-16 08:19:47,034|INFO|hash_count: 7
+2015-09-16 08:19:47,034|INFO|Total number of kmers: 378
+2015-09-16 08:19:47,034|INFO|Number of uniq kmers: 378
+2015-09-16 08:19:47,034|INFO|Real false positive rate: 0.0075101670017
+2015-09-16 08:19:47,034|INFO|bf_size: 11416 (1.4 KB)
+2015-09-16 08:19:47,034|INFO|hash_count: 7
+2015-09-16 08:19:47,035|INFO|Total number of kmers: 754
+2015-09-16 08:19:47,035|INFO|Number of uniq kmers: 539
+2015-09-16 08:19:47,035|INFO|Total number of kmers: 376
+2015-09-16 08:19:47,035|INFO|Real false positive rate: 0.00132984648863
+2015-09-16 08:19:47,035|INFO|Number of uniq kmers: 375
+2015-09-16 08:19:47,035|INFO|Real false positive rate: 0.00740998108808
+2015-09-16 08:19:47,035|INFO|bf_size: 11813 (1.4 KB)
+2015-09-16 08:19:47,035|INFO|hash_count: 7
+2015-09-16 08:19:47,035|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,035|INFO|hash_count: 7
+2015-09-16 08:19:47,037|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,037|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,037|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,037|INFO|bf_size: 7576 (947.0 bytes)
+2015-09-16 08:19:47,037|INFO|hash_count: 7
+2015-09-16 08:19:47,039|INFO|Total number of kmers: 1121
+2015-09-16 08:19:47,039|INFO|Number of uniq kmers: 1026
+2015-09-16 08:19:47,040|INFO|Real false positive rate: 0.004840702501
+2015-09-16 08:19:47,040|INFO|bf_size: 3798 (474.8 bytes)
+2015-09-16 08:19:47,040|INFO|hash_count: 7
+2015-09-16 08:19:47,041|INFO|Total number of kmers: 1160
+2015-09-16 08:19:47,041|INFO|Number of uniq kmers: 1039
+2015-09-16 08:19:47,041|INFO|Real false positive rate: 0.00434092436361
+2015-09-16 08:19:47,041|INFO|bf_size: 3778 (472.2 bytes)
+2015-09-16 08:19:47,041|INFO|Total number of kmers: 744
+2015-09-16 08:19:47,041|INFO|hash_count: 7
+2015-09-16 08:19:47,041|INFO|Number of uniq kmers: 693
+2015-09-16 08:19:47,041|INFO|Real false positive rate: 0.00528867855511
+2015-09-16 08:19:47,041|INFO|bf_size: 4042 (505.2 bytes)
+2015-09-16 08:19:47,041|INFO|hash_count: 7
+2015-09-16 08:19:47,041|INFO|Total number of kmers: 373
+2015-09-16 08:19:47,041|INFO|Number of uniq kmers: 371
+2015-09-16 08:19:47,041|INFO|Real false positive rate: 0.00731687681632
+2015-09-16 08:19:47,042|INFO|bf_size: 7770 (971.2 bytes)
+2015-09-16 08:19:47,042|INFO|hash_count: 7
+2015-09-16 08:19:47,042|INFO|Total number of kmers: 371
+2015-09-16 08:19:47,042|INFO|Number of uniq kmers: 371
+2015-09-16 08:19:47,043|INFO|Real false positive rate: 0.00750756897143
+2015-09-16 08:19:47,043|INFO|bf_size: 3849 (481.1 bytes)
+2015-09-16 08:19:47,043|INFO|hash_count: 7
+2015-09-16 08:19:47,043|INFO|Total number of kmers: 397
+2015-09-16 08:19:47,043|INFO|Number of uniq kmers: 396
+2015-09-16 08:19:47,043|INFO|Real false positive rate: 0.00742245948444
+2015-09-16 08:19:47,043|INFO|bf_size: 3920 (490.0 bytes)
+2015-09-16 08:19:47,043|INFO|hash_count: 7
+2015-09-16 08:19:47,044|INFO|Total number of kmers: 378
+2015-09-16 08:19:47,044|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,044|INFO|Real false positive rate: 0.00741390947263
+2015-09-16 08:19:47,044|INFO|bf_size: 23718 (2.9 KB)
+2015-09-16 08:19:47,045|INFO|hash_count: 7
+2015-09-16 08:19:47,045|INFO|Total number of kmers: 385
+2015-09-16 08:19:47,045|INFO|Number of uniq kmers: 385
+2015-09-16 08:19:47,045|INFO|Real false positive rate: 0.00751267151678
+2015-09-16 08:19:47,045|INFO|bf_size: 26773 (3.3 KB)
+2015-09-16 08:19:47,045|INFO|hash_count: 7
+2015-09-16 08:19:47,045|INFO|Total number of kmers: 763
+2015-09-16 08:19:47,045|INFO|Number of uniq kmers: 736
+2015-09-16 08:19:47,045|INFO|Real false positive rate: 0.00628974980322
+2015-09-16 08:19:47,045|INFO|bf_size: 11782 (1.4 KB)
+2015-09-16 08:19:47,045|INFO|hash_count: 7
+2015-09-16 08:19:47,051|INFO|Total number of kmers: 1157
+2015-09-16 08:19:47,051|INFO|Number of uniq kmers: 1016
+2015-09-16 08:19:47,051|INFO|Real false positive rate: 0.00392625351449
+2015-09-16 08:19:47,051|INFO|bf_size: 11935 (1.5 KB)
+2015-09-16 08:19:47,051|INFO|hash_count: 7
+2015-09-16 08:19:47,055|INFO|Total number of kmers: 2329
+2015-09-16 08:19:47,055|INFO|Number of uniq kmers: 1863
+2015-09-16 08:19:47,055|INFO|Real false positive rate: 0.00242163936497
+2015-09-16 08:19:47,055|INFO|bf_size: 3930 (491.2 bytes)
+2015-09-16 08:19:47,055|INFO|hash_count: 7
+2015-09-16 08:19:47,056|INFO|Total number of kmers: 1172
+2015-09-16 08:19:47,056|INFO|Number of uniq kmers: 1004
+2015-09-16 08:19:47,056|INFO|Real false positive rate: 0.00345840400233
+2015-09-16 08:19:47,056|INFO|bf_size: 7851 (981.4 bytes)
+2015-09-16 08:19:47,056|INFO|hash_count: 7
+2015-09-16 08:19:47,056|INFO|Total number of kmers: 2629
+2015-09-16 08:19:47,056|INFO|Number of uniq kmers: 2085
+2015-09-16 08:19:47,057|INFO|Real false positive rate: 0.00231480700856
+2015-09-16 08:19:47,057|INFO|bf_size: 3859 (482.4 bytes)
+2015-09-16 08:19:47,057|INFO|hash_count: 7
+2015-09-16 08:19:47,057|INFO|Total number of kmers: 386
+2015-09-16 08:19:47,057|INFO|Number of uniq kmers: 386
+2015-09-16 08:19:47,057|INFO|Real false positive rate: 0.00751435141982
+2015-09-16 08:19:47,057|INFO|bf_size: 3992 (499.0 bytes)
+2015-09-16 08:19:47,057|INFO|hash_count: 7
+2015-09-16 08:19:47,058|INFO|Total number of kmers: 379
+2015-09-16 08:19:47,058|INFO|Number of uniq kmers: 379
+2015-09-16 08:19:47,058|INFO|Real false positive rate: 0.00751188390192
+2015-09-16 08:19:47,059|INFO|bf_size: 4093 (511.6 bytes)
+2015-09-16 08:19:47,059|INFO|hash_count: 7
+2015-09-16 08:19:47,059|INFO|Total number of kmers: 392
+2015-09-16 08:19:47,059|INFO|Number of uniq kmers: 391
+2015-09-16 08:19:47,059|INFO|Real false positive rate: 0.00741314134835
+2015-09-16 08:19:47,059|INFO|bf_size: 7841 (980.1 bytes)
+2015-09-16 08:19:47,059|INFO|hash_count: 7
+2015-09-16 08:19:47,060|INFO|Total number of kmers: 771
+2015-09-16 08:19:47,060|INFO|Number of uniq kmers: 685
+2015-09-16 08:19:47,060|INFO|Real false positive rate: 0.0041680262719
+2015-09-16 08:19:47,060|INFO|bf_size: 3859 (482.4 bytes)
+2015-09-16 08:19:47,060|INFO|hash_count: 7
+2015-09-16 08:19:47,060|INFO|Total number of kmers: 402
+2015-09-16 08:19:47,060|INFO|Number of uniq kmers: 400
+2015-09-16 08:19:47,060|INFO|Real false positive rate: 0.00733293045286
+2015-09-16 08:19:47,061|INFO|bf_size: 3981 (497.6 bytes)
+2015-09-16 08:19:47,061|INFO|hash_count: 7
+2015-09-16 08:19:47,062|INFO|Total number of kmers: 379
+2015-09-16 08:19:47,062|INFO|Number of uniq kmers: 379
+2015-09-16 08:19:47,062|INFO|Real false positive rate: 0.00751188390192
+2015-09-16 08:19:47,062|INFO|bf_size: 11609 (1.4 KB)
+2015-09-16 08:19:47,062|INFO|hash_count: 7
+2015-09-16 08:19:47,062|INFO|Total number of kmers: 770
+2015-09-16 08:19:47,062|INFO|Number of uniq kmers: 718
+2015-09-16 08:19:47,062|INFO|Real false positive rate: 0.00531665927242
+2015-09-16 08:19:47,062|INFO|Total number of kmers: 391
+2015-09-16 08:19:47,062|INFO|Number of uniq kmers: 390
+2015-09-16 08:19:47,062|INFO|bf_size: 15163 (1.9 KB)
+2015-09-16 08:19:47,062|INFO|Real false positive rate: 0.00742032627931
+2015-09-16 08:19:47,062|INFO|hash_count: 7
+2015-09-16 08:19:47,063|INFO|bf_size: 4093 (511.6 bytes)
+2015-09-16 08:19:47,063|INFO|hash_count: 7
+2015-09-16 08:19:47,064|INFO|Total number of kmers: 402
+2015-09-16 08:19:47,064|INFO|Number of uniq kmers: 402
+2015-09-16 08:19:47,064|INFO|Real false positive rate: 0.00751328649613
+2015-09-16 08:19:47,065|INFO|bf_size: 7515 (939.4 bytes)
+2015-09-16 08:19:47,065|INFO|hash_count: 7
+2015-09-16 08:19:47,067|INFO|Total number of kmers: 1140
+2015-09-16 08:19:47,067|INFO|Number of uniq kmers: 922
+2015-09-16 08:19:47,067|INFO|Real false positive rate: 0.00256642934045
+2015-09-16 08:19:47,067|INFO|bf_size: 3757 (469.6 bytes)
+2015-09-16 08:19:47,067|INFO|hash_count: 7
+2015-09-16 08:19:47,068|INFO|Total number of kmers: 738
+2015-09-16 08:19:47,068|INFO|Number of uniq kmers: 588
+2015-09-16 08:19:47,068|INFO|Real false positive rate: 0.00237329940678
+2015-09-16 08:19:47,068|INFO|bf_size: 3757 (469.6 bytes)
+2015-09-16 08:19:47,068|INFO|hash_count: 7
+2015-09-16 08:19:47,069|INFO|Total number of kmers: 369
+2015-09-16 08:19:47,069|INFO|Number of uniq kmers: 369
+2015-09-16 08:19:47,069|INFO|Total number of kmers: 1489
+2015-09-16 08:19:47,069|INFO|Real false positive rate: 0.00751375873518
+2015-09-16 08:19:47,069|INFO|Number of uniq kmers: 1279
+2015-09-16 08:19:47,069|INFO|Real false positive rate: 0.00350661611976
+2015-09-16 08:19:47,069|INFO|bf_size: 7495 (936.9 bytes)
+2015-09-16 08:19:47,069|INFO|hash_count: 7
+2015-09-16 08:19:47,069|INFO|bf_size: 7668 (958.5 bytes)
+2015-09-16 08:19:47,069|INFO|hash_count: 7
+2015-09-16 08:19:47,070|INFO|Total number of kmers: 369
+2015-09-16 08:19:47,070|INFO|Number of uniq kmers: 369
+2015-09-16 08:19:47,070|INFO|Real false positive rate: 0.00751375873518
+2015-09-16 08:19:47,070|INFO|bf_size: 3768 (471.0 bytes)
+2015-09-16 08:19:47,070|INFO|hash_count: 7
+2015-09-16 08:19:47,072|INFO|Total number of kmers: 370
+2015-09-16 08:19:47,072|INFO|Number of uniq kmers: 370
+2015-09-16 08:19:47,072|INFO|Real false positive rate: 0.00750580443405
+2015-09-16 08:19:47,072|INFO|bf_size: 3727 (465.9 bytes)
+2015-09-16 08:19:47,072|INFO|hash_count: 7
+2015-09-16 08:19:47,073|INFO|Total number of kmers: 736
+2015-09-16 08:19:47,073|INFO|Number of uniq kmers: 675
+2015-09-16 08:19:47,073|INFO|Real false positive rate: 0.004891871579
+2015-09-16 08:19:47,073|INFO|Total number of kmers: 753
+2015-09-16 08:19:47,073|INFO|Number of uniq kmers: 714
+2015-09-16 08:19:47,073|INFO|Real false positive rate: 0.00577842356754
+2015-09-16 08:19:47,073|INFO|bf_size: 3737 (467.1 bytes)
+2015-09-16 08:19:47,073|INFO|hash_count: 7
+2015-09-16 08:19:47,073|INFO|bf_size: 3930 (491.2 bytes)
+2015-09-16 08:19:47,073|INFO|hash_count: 7
+2015-09-16 08:19:47,073|INFO|Total number of kmers: 366
+2015-09-16 08:19:47,073|INFO|Number of uniq kmers: 366
+2015-09-16 08:19:47,074|INFO|Real false positive rate: 0.00750845445819
+2015-09-16 08:19:47,074|INFO|bf_size: 47894 (5.8 KB)
+2015-09-16 08:19:47,074|INFO|hash_count: 7
+2015-09-16 08:19:47,074|INFO|Total number of kmers: 367
+2015-09-16 08:19:47,074|INFO|Number of uniq kmers: 366
+2015-09-16 08:19:47,074|INFO|Real false positive rate: 0.00741110201005
+2015-09-16 08:19:47,075|INFO|Total number of kmers: 386
+2015-09-16 08:19:47,075|INFO|Number of uniq kmers: 386
+2015-09-16 08:19:47,075|INFO|bf_size: 51020 (6.2 KB)
+2015-09-16 08:19:47,075|INFO|Real false positive rate: 0.00751435141982
+2015-09-16 08:19:47,075|INFO|hash_count: 7
+2015-09-16 08:19:47,075|INFO|bf_size: 23921 (2.9 KB)
+2015-09-16 08:19:47,075|INFO|hash_count: 7
+2015-09-16 08:19:47,085|INFO|Total number of kmers: 2349
+2015-09-16 08:19:47,085|INFO|Number of uniq kmers: 1699
+2015-09-16 08:19:47,085|INFO|Real false positive rate: 0.00141629644176
+2015-09-16 08:19:47,085|INFO|bf_size: 23972 (2.9 KB)
+2015-09-16 08:19:47,085|INFO|hash_count: 7
+2015-09-16 08:19:47,094|INFO|Total number of kmers: 4703
+2015-09-16 08:19:47,094|INFO|Number of uniq kmers: 3390
+2015-09-16 08:19:47,094|INFO|Real false positive rate: 0.00139009733831
+2015-09-16 08:19:47,094|INFO|bf_size: 12546 (1.5 KB)
+2015-09-16 08:19:47,094|INFO|hash_count: 7
+2015-09-16 08:19:47,096|INFO|Total number of kmers: 2354
+2015-09-16 08:19:47,096|INFO|Number of uniq kmers: 1922
+2015-09-16 08:19:47,096|INFO|Real false positive rate: 0.00269633160288
+2015-09-16 08:19:47,096|INFO|bf_size: 11375 (1.4 KB)
+2015-09-16 08:19:47,096|INFO|hash_count: 7
+2015-09-16 08:19:47,097|INFO|Total number of kmers: 5010
+2015-09-16 08:19:47,097|INFO|Number of uniq kmers: 3672
+2015-09-16 08:19:47,097|INFO|Real false positive rate: 0.00152101195246
+2015-09-16 08:19:47,097|INFO|bf_size: 4155 (519.4 bytes)
+2015-09-16 08:19:47,097|INFO|hash_count: 7
+2015-09-16 08:19:47,099|INFO|Total number of kmers: 408
+2015-09-16 08:19:47,099|INFO|Number of uniq kmers: 408
+2015-09-16 08:19:47,099|INFO|Real false positive rate: 0.00750521023483
+2015-09-16 08:19:47,099|INFO|bf_size: 8391 (1.0 KB)
+2015-09-16 08:19:47,099|INFO|hash_count: 7
+2015-09-16 08:19:47,100|INFO|Total number of kmers: 1232
+2015-09-16 08:19:47,100|INFO|Number of uniq kmers: 913
+2015-09-16 08:19:47,100|INFO|Real false positive rate: 0.00161445120634
+2015-09-16 08:19:47,100|INFO|bf_size: 4175 (521.9 bytes)
+2015-09-16 08:19:47,100|INFO|hash_count: 7
+2015-09-16 08:19:47,101|INFO|Total number of kmers: 1117
+2015-09-16 08:19:47,101|INFO|Number of uniq kmers: 839
+2015-09-16 08:19:47,101|INFO|Real false positive rate: 0.00173520465229
+2015-09-16 08:19:47,101|INFO|bf_size: 4216 (527.0 bytes)
+2015-09-16 08:19:47,101|INFO|hash_count: 7
+2015-09-16 08:19:47,102|INFO|Total number of kmers: 410
+2015-09-16 08:19:47,102|INFO|Number of uniq kmers: 410
+2015-09-16 08:19:47,102|INFO|Real false positive rate: 0.00750840657469
+2015-09-16 08:19:47,102|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,102|INFO|hash_count: 7
+2015-09-16 08:19:47,103|INFO|Total number of kmers: 824
+2015-09-16 08:19:47,103|INFO|Number of uniq kmers: 674
+2015-09-16 08:19:47,103|INFO|Total number of kmers: 414
+2015-09-16 08:19:47,103|INFO|Real false positive rate: 0.00272282205907
+2015-09-16 08:19:47,103|INFO|Number of uniq kmers: 414
+2015-09-16 08:19:47,103|INFO|Real false positive rate: 0.00750603862549
+2015-09-16 08:19:47,103|INFO|bf_size: 7536 (942.0 bytes)
+2015-09-16 08:19:47,103|INFO|bf_size: 3890 (486.2 bytes)
+2015-09-16 08:19:47,103|INFO|hash_count: 7
+2015-09-16 08:19:47,103|INFO|hash_count: 7
+2015-09-16 08:19:47,104|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,104|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,104|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,104|INFO|bf_size: 3645 (455.6 bytes)
+2015-09-16 08:19:47,104|INFO|hash_count: 7
+2015-09-16 08:19:47,105|INFO|Total number of kmers: 382
+2015-09-16 08:19:47,105|INFO|Number of uniq kmers: 381
+2015-09-16 08:19:47,105|INFO|Real false positive rate: 0.00741235765359
+2015-09-16 08:19:47,105|INFO|bf_size: 11904 (1.5 KB)
+2015-09-16 08:19:47,105|INFO|hash_count: 7
+2015-09-16 08:19:47,106|INFO|Total number of kmers: 358
+2015-09-16 08:19:47,106|INFO|Number of uniq kmers: 358
+2015-09-16 08:19:47,106|INFO|Real false positive rate: 0.00751393550439
+2015-09-16 08:19:47,106|INFO|bf_size: 12067 (1.5 KB)
+2015-09-16 08:19:47,106|INFO|hash_count: 7
+2015-09-16 08:19:47,106|INFO|Total number of kmers: 740
+2015-09-16 08:19:47,106|INFO|Number of uniq kmers: 511
+2015-09-16 08:19:47,106|INFO|Real false positive rate: 0.00110102877376
+2015-09-16 08:19:47,106|INFO|bf_size: 3920 (490.0 bytes)
+2015-09-16 08:19:47,106|INFO|hash_count: 7
+2015-09-16 08:19:47,108|INFO|Total number of kmers: 385
+2015-09-16 08:19:47,108|INFO|Number of uniq kmers: 383
+2015-09-16 08:19:47,108|INFO|Real false positive rate: 0.00732443816228
+2015-09-16 08:19:47,108|INFO|bf_size: 7984 (998.0 bytes)
+2015-09-16 08:19:47,108|INFO|hash_count: 7
+2015-09-16 08:19:47,110|INFO|Total number of kmers: 1169
+2015-09-16 08:19:47,110|INFO|Number of uniq kmers: 985
+2015-09-16 08:19:47,110|INFO|Real false positive rate: 0.00317639417377
+2015-09-16 08:19:47,110|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,110|INFO|hash_count: 7
+2015-09-16 08:19:47,111|INFO|Total number of kmers: 1185
+2015-09-16 08:19:47,111|INFO|Number of uniq kmers: 1048
+2015-09-16 08:19:47,111|INFO|Real false positive rate: 0.00407097061028
+2015-09-16 08:19:47,111|INFO|bf_size: 4032 (504.0 bytes)
+2015-09-16 08:19:47,111|INFO|hash_count: 7
+2015-09-16 08:19:47,112|INFO|Total number of kmers: 784
+2015-09-16 08:19:47,112|INFO|Number of uniq kmers: 666
+2015-09-16 08:19:47,112|INFO|Real false positive rate: 0.00331204654406
+2015-09-16 08:19:47,112|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,112|INFO|Number of uniq kmers: 387
+2015-09-16 08:19:47,112|INFO|Real false positive rate: 0.00741466134667
+2015-09-16 08:19:47,112|INFO|bf_size: 4246 (530.8 bytes)
+2015-09-16 08:19:47,112|INFO|hash_count: 7
+2015-09-16 08:19:47,112|INFO|bf_size: 7821 (977.6 bytes)
+2015-09-16 08:19:47,112|INFO|hash_count: 7
+2015-09-16 08:19:47,113|INFO|Total number of kmers: 396
+2015-09-16 08:19:47,113|INFO|Number of uniq kmers: 396
+2015-09-16 08:19:47,113|INFO|Real false positive rate: 0.00751254193858
+2015-09-16 08:19:47,113|INFO|bf_size: 3992 (499.0 bytes)
+2015-09-16 08:19:47,113|INFO|hash_count: 7
+2015-09-16 08:19:47,114|INFO|Total number of kmers: 417
+2015-09-16 08:19:47,114|INFO|Number of uniq kmers: 417
+2015-09-16 08:19:47,114|INFO|Real false positive rate: 0.00751074781114
+2015-09-16 08:19:47,114|INFO|bf_size: 3829 (478.6 bytes)
+2015-09-16 08:19:47,114|INFO|hash_count: 7
+2015-09-16 08:19:47,115|INFO|Total number of kmers: 392
+2015-09-16 08:19:47,115|INFO|Number of uniq kmers: 392
+2015-09-16 08:19:47,115|INFO|Real false positive rate: 0.00750592809983
+2015-09-16 08:19:47,115|INFO|bf_size: 23626 (2.9 KB)
+2015-09-16 08:19:47,115|INFO|hash_count: 7
+2015-09-16 08:19:47,116|INFO|Total number of kmers: 768
+2015-09-16 08:19:47,116|INFO|Number of uniq kmers: 719
+2015-09-16 08:19:47,116|INFO|Real false positive rate: 0.00542240292131
+2015-09-16 08:19:47,116|INFO|bf_size: 27394 (3.3 KB)
+2015-09-16 08:19:47,116|INFO|hash_count: 7
+2015-09-16 08:19:47,116|INFO|Total number of kmers: 376
+2015-09-16 08:19:47,116|INFO|Number of uniq kmers: 375
+2015-09-16 08:19:47,116|INFO|Real false positive rate: 0.00740998108808
+2015-09-16 08:19:47,116|INFO|bf_size: 12006 (1.5 KB)
+2015-09-16 08:19:47,116|INFO|hash_count: 7
+2015-09-16 08:19:47,121|INFO|Total number of kmers: 1179
+2015-09-16 08:19:47,121|INFO|Number of uniq kmers: 1024
+2015-09-16 08:19:47,121|INFO|Real false positive rate: 0.00371190512974
+2015-09-16 08:19:47,122|INFO|bf_size: 11619 (1.4 KB)
+2015-09-16 08:19:47,122|INFO|hash_count: 7
+2015-09-16 08:19:47,126|INFO|Total number of kmers: 2320
+2015-09-16 08:19:47,126|INFO|Number of uniq kmers: 1842
+2015-09-16 08:19:47,126|INFO|Real false positive rate: 0.00232863687552
+2015-09-16 08:19:47,126|INFO|bf_size: 3910 (488.8 bytes)
+2015-09-16 08:19:47,126|INFO|hash_count: 7
+2015-09-16 08:19:47,127|INFO|Total number of kmers: 1141
+2015-09-16 08:19:47,127|INFO|Number of uniq kmers: 936
+2015-09-16 08:19:47,127|INFO|Real false positive rate: 0.00276410851718
+2015-09-16 08:19:47,127|INFO|bf_size: 8096 (1012.0 bytes)
+2015-09-16 08:19:47,127|INFO|hash_count: 7
+2015-09-16 08:19:47,128|INFO|Total number of kmers: 2690
+2015-09-16 08:19:47,128|INFO|Number of uniq kmers: 1989
+2015-09-16 08:19:47,128|INFO|Total number of kmers: 384
+2015-09-16 08:19:47,128|INFO|Real false positive rate: 0.00159470151509
+2015-09-16 08:19:47,128|INFO|Number of uniq kmers: 384
+2015-09-16 08:19:47,128|INFO|Real false positive rate: 0.00751098329072
+2015-09-16 08:19:47,128|INFO|bf_size: 3900 (487.5 bytes)
+2015-09-16 08:19:47,128|INFO|hash_count: 7
+2015-09-16 08:19:47,128|INFO|bf_size: 4195 (524.4 bytes)
+2015-09-16 08:19:47,128|INFO|hash_count: 7
+2015-09-16 08:19:47,129|INFO|Total number of kmers: 383
+2015-09-16 08:19:47,129|INFO|Number of uniq kmers: 383
+2015-09-16 08:19:47,130|INFO|Real false positive rate: 0.00750928667967
+2015-09-16 08:19:47,130|INFO|bf_size: 3859 (482.4 bytes)
+2015-09-16 08:19:47,130|INFO|hash_count: 7
+2015-09-16 08:19:47,130|INFO|Total number of kmers: 412
+2015-09-16 08:19:47,130|INFO|Number of uniq kmers: 412
+2015-09-16 08:19:47,130|INFO|Real false positive rate: 0.00751157339381
+2015-09-16 08:19:47,130|INFO|bf_size: 7760 (970.0 bytes)
+2015-09-16 08:19:47,130|INFO|hash_count: 7
+2015-09-16 08:19:47,131|INFO|Total number of kmers: 795
+2015-09-16 08:19:47,131|INFO|Number of uniq kmers: 781
+2015-09-16 08:19:47,131|INFO|Real false positive rate: 0.00688002369887
+2015-09-16 08:19:47,131|INFO|bf_size: 4002 (500.2 bytes)
+2015-09-16 08:19:47,131|INFO|hash_count: 7
+2015-09-16 08:19:47,131|INFO|Total number of kmers: 379
+2015-09-16 08:19:47,131|INFO|Number of uniq kmers: 379
+2015-09-16 08:19:47,131|INFO|Real false positive rate: 0.00751188390192
+2015-09-16 08:19:47,131|INFO|bf_size: 3757 (469.6 bytes)
+2015-09-16 08:19:47,132|INFO|hash_count: 7
+2015-09-16 08:19:47,133|INFO|Total number of kmers: 393
+2015-09-16 08:19:47,133|INFO|Number of uniq kmers: 392
+2015-09-16 08:19:47,133|INFO|Real false positive rate: 0.00741502292904
+2015-09-16 08:19:47,133|INFO|bf_size: 11925 (1.5 KB)
+2015-09-16 08:19:47,133|INFO|hash_count: 7
+2015-09-16 08:19:47,133|INFO|Total number of kmers: 369
+2015-09-16 08:19:47,133|INFO|Total number of kmers: 762
+2015-09-16 08:19:47,133|INFO|Number of uniq kmers: 369
+2015-09-16 08:19:47,133|INFO|Number of uniq kmers: 641
+2015-09-16 08:19:47,133|INFO|Real false positive rate: 0.00751375873518
+2015-09-16 08:19:47,133|INFO|Real false positive rate: 0.003148645155
+2015-09-16 08:19:47,133|INFO|bf_size: 15469 (1.9 KB)
+2015-09-16 08:19:47,133|INFO|bf_size: 4022 (502.8 bytes)
+2015-09-16 08:19:47,133|INFO|hash_count: 7
+2015-09-16 08:19:47,133|INFO|hash_count: 7
+2015-09-16 08:19:47,135|INFO|Total number of kmers: 395
+2015-09-16 08:19:47,135|INFO|Number of uniq kmers: 394
+2015-09-16 08:19:47,135|INFO|Real false positive rate: 0.00741875903122
+2015-09-16 08:19:47,135|INFO|bf_size: 7902 (987.8 bytes)
+2015-09-16 08:19:47,135|INFO|hash_count: 7
+2015-09-16 08:19:47,138|INFO|Total number of kmers: 1171
+2015-09-16 08:19:47,138|INFO|Number of uniq kmers: 944
+2015-09-16 08:19:47,138|INFO|Real false positive rate: 0.00252277409902
+2015-09-16 08:19:47,138|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,138|INFO|hash_count: 7
+2015-09-16 08:19:47,139|INFO|Total number of kmers: 776
+2015-09-16 08:19:47,139|INFO|Number of uniq kmers: 589
+2015-09-16 08:19:47,139|INFO|Real false positive rate: 0.00183563349471
+2015-09-16 08:19:47,139|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,139|INFO|hash_count: 7
+2015-09-16 08:19:47,140|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,140|INFO|Number of uniq kmers: 388
+2015-09-16 08:19:47,140|INFO|Real false positive rate: 0.00750842915824
+2015-09-16 08:19:47,140|INFO|Total number of kmers: 1519
+2015-09-16 08:19:47,140|INFO|bf_size: 7790 (973.8 bytes)
+2015-09-16 08:19:47,140|INFO|Number of uniq kmers: 1229
+2015-09-16 08:19:47,140|INFO|hash_count: 7
+2015-09-16 08:19:47,140|INFO|Real false positive rate: 0.00257103718708
+2015-09-16 08:19:47,140|INFO|bf_size: 7678 (959.8 bytes)
+2015-09-16 08:19:47,140|INFO|hash_count: 7
+2015-09-16 08:19:47,141|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,141|INFO|Number of uniq kmers: 387
+2015-09-16 08:19:47,141|INFO|Real false positive rate: 0.00741466134667
+2015-09-16 08:19:47,141|INFO|bf_size: 3920 (490.0 bytes)
+2015-09-16 08:19:47,141|INFO|hash_count: 7
+2015-09-16 08:19:47,143|INFO|Total number of kmers: 385
+2015-09-16 08:19:47,143|INFO|Number of uniq kmers: 385
+2015-09-16 08:19:47,143|INFO|Real false positive rate: 0.00751267151678
+2015-09-16 08:19:47,143|INFO|bf_size: 3869 (483.6 bytes)
+2015-09-16 08:19:47,143|INFO|hash_count: 7
+2015-09-16 08:19:47,144|INFO|Total number of kmers: 765
+2015-09-16 08:19:47,144|INFO|Total number of kmers: 754
+2015-09-16 08:19:47,144|INFO|Number of uniq kmers: 717
+2015-09-16 08:19:47,144|INFO|Number of uniq kmers: 660
+2015-09-16 08:19:47,144|INFO|Real false positive rate: 0.00545457363546
+2015-09-16 08:19:47,144|INFO|Real false positive rate: 0.00386362363475
+2015-09-16 08:19:47,144|INFO|bf_size: 3890 (486.2 bytes)
+2015-09-16 08:19:47,144|INFO|bf_size: 3788 (473.5 bytes)
+2015-09-16 08:19:47,144|INFO|hash_count: 7
+2015-09-16 08:19:47,144|INFO|hash_count: 7
+2015-09-16 08:19:47,145|INFO|Total number of kmers: 380
+2015-09-16 08:19:47,145|INFO|Number of uniq kmers: 380
+2015-09-16 08:19:47,145|INFO|Real false positive rate: 0.00751359220463
+2015-09-16 08:19:47,145|INFO|bf_size: 97876 (11.9 KB)
+2015-09-16 08:19:47,145|INFO|hash_count: 7
+2015-09-16 08:19:47,146|INFO|Total number of kmers: 372
+2015-09-16 08:19:47,146|INFO|Number of uniq kmers: 372
+2015-09-16 08:19:47,146|INFO|Real false positive rate: 0.00750932448572
+2015-09-16 08:19:47,146|INFO|Total number of kmers: 382
+2015-09-16 08:19:47,146|INFO|Number of uniq kmers: 382
+2015-09-16 08:19:47,146|INFO|bf_size: 97011 (11.8 KB)
+2015-09-16 08:19:47,146|INFO|Real false positive rate: 0.00750758162107
+2015-09-16 08:19:47,146|INFO|hash_count: 7
+2015-09-16 08:19:47,146|INFO|bf_size: 46193 (5.6 KB)
+2015-09-16 08:19:47,146|INFO|hash_count: 7
+2015-09-16 08:19:47,166|INFO|Total number of kmers: 4536
+2015-09-16 08:19:47,166|INFO|Number of uniq kmers: 3324
+2015-09-16 08:19:47,166|INFO|Real false positive rate: 0.00151956203436
+2015-09-16 08:19:47,166|INFO|bf_size: 51682 (6.3 KB)
+2015-09-16 08:19:47,166|INFO|hash_count: 7
+2015-09-16 08:19:47,187|INFO|Total number of kmers: 9611
+2015-09-16 08:19:47,187|INFO|Number of uniq kmers: 6646
+2015-09-16 08:19:47,187|INFO|Real false positive rate: 0.00110906470762
+2015-09-16 08:19:47,187|INFO|Total number of kmers: 9526
+2015-09-16 08:19:47,187|INFO|bf_size: 22465 (2.7 KB)
+2015-09-16 08:19:47,187|INFO|Number of uniq kmers: 5781
+2015-09-16 08:19:47,187|INFO|hash_count: 7
+2015-09-16 08:19:47,187|INFO|Real false positive rate: 0.000536931625417
+2015-09-16 08:19:47,187|INFO|bf_size: 23728 (2.9 KB)
+2015-09-16 08:19:47,187|INFO|hash_count: 7
+2015-09-16 08:19:47,189|INFO|Total number of kmers: 5075
+2015-09-16 08:19:47,189|INFO|Number of uniq kmers: 3828
+2015-09-16 08:19:47,189|INFO|Real false positive rate: 0.00177422718621
+2015-09-16 08:19:47,189|INFO|bf_size: 11253 (1.4 KB)
+2015-09-16 08:19:47,189|INFO|hash_count: 7
+2015-09-16 08:19:47,194|INFO|Total number of kmers: 1105
+2015-09-16 08:19:47,194|INFO|Number of uniq kmers: 955
+2015-09-16 08:19:47,194|INFO|Real false positive rate: 0.00361832581287
+2015-09-16 08:19:47,194|INFO|bf_size: 11212 (1.4 KB)
+2015-09-16 08:19:47,194|INFO|hash_count: 7
+2015-09-16 08:19:47,197|INFO|Total number of kmers: 2206
+2015-09-16 08:19:47,197|INFO|Number of uniq kmers: 1618
+2015-09-16 08:19:47,197|INFO|Real false positive rate: 0.00152696820897
+2015-09-16 08:19:47,197|INFO|bf_size: 3869 (483.6 bytes)
+2015-09-16 08:19:47,197|INFO|hash_count: 7
+2015-09-16 08:19:47,197|INFO|Total number of kmers: 2330
+2015-09-16 08:19:47,197|INFO|Number of uniq kmers: 1960
+2015-09-16 08:19:47,197|INFO|Real false positive rate: 0.00314788795714
+2015-09-16 08:19:47,197|INFO|bf_size: 7383 (922.9 bytes)
+2015-09-16 08:19:47,198|INFO|hash_count: 7
+2015-09-16 08:19:47,198|INFO|Total number of kmers: 380
+2015-09-16 08:19:47,199|INFO|Number of uniq kmers: 380
+2015-09-16 08:19:47,199|INFO|Real false positive rate: 0.00751359220463
+2015-09-16 08:19:47,199|INFO|bf_size: 3778 (472.2 bytes)
+2015-09-16 08:19:47,199|INFO|hash_count: 7
+2015-09-16 08:19:47,199|INFO|Total number of kmers: 1101
+2015-09-16 08:19:47,199|INFO|Number of uniq kmers: 776
+2015-09-16 08:19:47,199|INFO|Real false positive rate: 0.00123109142864
+2015-09-16 08:19:47,199|INFO|bf_size: 3605 (450.6 bytes)
+2015-09-16 08:19:47,199|INFO|hash_count: 7
+2015-09-16 08:19:47,200|INFO|Total number of kmers: 371
+2015-09-16 08:19:47,200|INFO|Number of uniq kmers: 370
+2015-09-16 08:19:47,200|INFO|Real false positive rate: 0.00740953508035
+2015-09-16 08:19:47,201|INFO|bf_size: 3818 (477.2 bytes)
+2015-09-16 08:19:47,201|INFO|hash_count: 7
+2015-09-16 08:19:47,201|INFO|Total number of kmers: 725
+2015-09-16 08:19:47,201|INFO|Number of uniq kmers: 645
+2015-09-16 08:19:47,201|INFO|Real false positive rate: 0.00419555151045
+2015-09-16 08:19:47,201|INFO|Total number of kmers: 354
+2015-09-16 08:19:47,201|INFO|Number of uniq kmers: 354
+2015-09-16 08:19:47,201|INFO|bf_size: 7393 (924.1 bytes)
+2015-09-16 08:19:47,201|INFO|Real false positive rate: 0.0075066262963
+2015-09-16 08:19:47,201|INFO|hash_count: 7
+2015-09-16 08:19:47,201|INFO|bf_size: 3696 (462.0 bytes)
+2015-09-16 08:19:47,201|INFO|hash_count: 7
+2015-09-16 08:19:47,202|INFO|Total number of kmers: 375
+2015-09-16 08:19:47,202|INFO|Number of uniq kmers: 375
+2015-09-16 08:19:47,202|INFO|Real false positive rate: 0.00751453757649
+2015-09-16 08:19:47,202|INFO|bf_size: 3696 (462.0 bytes)
+2015-09-16 08:19:47,202|INFO|hash_count: 7
+2015-09-16 08:19:47,203|INFO|Total number of kmers: 363
+2015-09-16 08:19:47,203|INFO|Number of uniq kmers: 362
+2015-09-16 08:19:47,203|INFO|Real false positive rate: 0.00741270395397
+2015-09-16 08:19:47,203|INFO|bf_size: 12006 (1.5 KB)
+2015-09-16 08:19:47,203|INFO|hash_count: 7
+2015-09-16 08:19:47,204|INFO|Total number of kmers: 363
+2015-09-16 08:19:47,204|INFO|Number of uniq kmers: 362
+2015-09-16 08:19:47,204|INFO|Total number of kmers: 726
+2015-09-16 08:19:47,204|INFO|Real false positive rate: 0.00741270395397
+2015-09-16 08:19:47,204|INFO|Number of uniq kmers: 502
+2015-09-16 08:19:47,204|INFO|Real false positive rate: 0.00110942837736
+2015-09-16 08:19:47,204|INFO|bf_size: 11721 (1.4 KB)
+2015-09-16 08:19:47,204|INFO|hash_count: 7
+2015-09-16 08:19:47,204|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,204|INFO|hash_count: 7
+2015-09-16 08:19:47,206|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,206|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,206|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,206|INFO|bf_size: 8167 (1020.9 bytes)
+2015-09-16 08:19:47,206|INFO|hash_count: 7
+2015-09-16 08:19:47,208|INFO|Total number of kmers: 1179
+2015-09-16 08:19:47,208|INFO|Number of uniq kmers: 1051
+2015-09-16 08:19:47,208|INFO|Real false positive rate: 0.00423823170358
+2015-09-16 08:19:47,208|INFO|bf_size: 3859 (482.4 bytes)
+2015-09-16 08:19:47,208|INFO|hash_count: 7
+2015-09-16 08:19:47,209|INFO|Total number of kmers: 1151
+2015-09-16 08:19:47,209|INFO|Number of uniq kmers: 1039
+2015-09-16 08:19:47,209|INFO|Real false positive rate: 0.00451603998273
+2015-09-16 08:19:47,210|INFO|bf_size: 4307 (538.4 bytes)
+2015-09-16 08:19:47,210|INFO|hash_count: 7
+2015-09-16 08:19:47,210|INFO|Total number of kmers: 802
+2015-09-16 08:19:47,210|INFO|Number of uniq kmers: 722
+2015-09-16 08:19:47,210|INFO|Real false positive rate: 0.00445506695478
+2015-09-16 08:19:47,210|INFO|bf_size: 3880 (485.0 bytes)
+2015-09-16 08:19:47,210|INFO|hash_count: 7
+2015-09-16 08:19:47,210|INFO|Total number of kmers: 379
+2015-09-16 08:19:47,210|INFO|Number of uniq kmers: 379
+2015-09-16 08:19:47,210|INFO|Real false positive rate: 0.00751188390192
+2015-09-16 08:19:47,210|INFO|bf_size: 7841 (980.1 bytes)
+2015-09-16 08:19:47,210|INFO|hash_count: 7
+2015-09-16 08:19:47,211|INFO|Total number of kmers: 423
+2015-09-16 08:19:47,212|INFO|Number of uniq kmers: 423
+2015-09-16 08:19:47,212|INFO|Real false positive rate: 0.00751148066067
+2015-09-16 08:19:47,212|INFO|bf_size: 4012 (501.5 bytes)
+2015-09-16 08:19:47,212|INFO|hash_count: 7
+2015-09-16 08:19:47,212|INFO|Total number of kmers: 381
+2015-09-16 08:19:47,212|INFO|Number of uniq kmers: 381
+2015-09-16 08:19:47,212|INFO|Real false positive rate: 0.00750586805169
+2015-09-16 08:19:47,212|INFO|bf_size: 3829 (478.6 bytes)
+2015-09-16 08:19:47,212|INFO|hash_count: 7
+2015-09-16 08:19:47,213|INFO|Total number of kmers: 394
+2015-09-16 08:19:47,213|INFO|Number of uniq kmers: 394
+2015-09-16 08:19:47,214|INFO|Real false positive rate: 0.00750925098514
+2015-09-16 08:19:47,214|INFO|Total number of kmers: 376
+2015-09-16 08:19:47,214|INFO|bf_size: 23636 (2.9 KB)
+2015-09-16 08:19:47,214|INFO|Number of uniq kmers: 376
+2015-09-16 08:19:47,214|INFO|hash_count: 7
+2015-09-16 08:19:47,214|INFO|Real false positive rate: 0.00750670714794
+2015-09-16 08:19:47,214|INFO|bf_size: 28046 (3.4 KB)
+2015-09-16 08:19:47,214|INFO|hash_count: 7
+2015-09-16 08:19:47,214|INFO|Total number of kmers: 770
+2015-09-16 08:19:47,214|INFO|Number of uniq kmers: 734
+2015-09-16 08:19:47,214|INFO|Real false positive rate: 0.00593275209772
+2015-09-16 08:19:47,214|INFO|bf_size: 11792 (1.4 KB)
+2015-09-16 08:19:47,214|INFO|hash_count: 7
+2015-09-16 08:19:47,219|INFO|Total number of kmers: 1158
+2015-09-16 08:19:47,219|INFO|Number of uniq kmers: 1025
+2015-09-16 08:19:47,219|INFO|Real false positive rate: 0.00408887947416
+2015-09-16 08:19:47,219|INFO|bf_size: 11843 (1.4 KB)
+2015-09-16 08:19:47,220|INFO|hash_count: 7
+2015-09-16 08:19:47,224|INFO|Total number of kmers: 2321
+2015-09-16 08:19:47,224|INFO|Number of uniq kmers: 1868
+2015-09-16 08:19:47,224|INFO|Real false positive rate: 0.00250096107665
+2015-09-16 08:19:47,224|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,224|INFO|hash_count: 7
+2015-09-16 08:19:47,225|INFO|Total number of kmers: 1163
+2015-09-16 08:19:47,225|INFO|Number of uniq kmers: 1034
+2015-09-16 08:19:47,225|INFO|Real false positive rate: 0.0041818845302
+2015-09-16 08:19:47,225|INFO|bf_size: 7841 (980.1 bytes)
+2015-09-16 08:19:47,225|INFO|hash_count: 7
+2015-09-16 08:19:47,226|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,226|INFO|Number of uniq kmers: 388
+2015-09-16 08:19:47,226|INFO|Total number of kmers: 2754
+2015-09-16 08:19:47,226|INFO|Real false positive rate: 0.00750842915824
+2015-09-16 08:19:47,226|INFO|Number of uniq kmers: 2200
+2015-09-16 08:19:47,226|INFO|Real false positive rate: 0.00240458361669
+2015-09-16 08:19:47,226|INFO|bf_size: 3920 (490.0 bytes)
+2015-09-16 08:19:47,226|INFO|hash_count: 7
+2015-09-16 08:19:47,226|INFO|bf_size: 3920 (490.0 bytes)
+2015-09-16 08:19:47,226|INFO|hash_count: 7
+2015-09-16 08:19:47,228|INFO|Total number of kmers: 385
+2015-09-16 08:19:47,228|INFO|Number of uniq kmers: 385
+2015-09-16 08:19:47,228|INFO|Total number of kmers: 385
+2015-09-16 08:19:47,228|INFO|Real false positive rate: 0.00751267151678
+2015-09-16 08:19:47,228|INFO|Number of uniq kmers: 385
+2015-09-16 08:19:47,228|INFO|Real false positive rate: 0.00751267151678
+2015-09-16 08:19:47,228|INFO|bf_size: 4053 (506.6 bytes)
+2015-09-16 08:19:47,228|INFO|hash_count: 7
+2015-09-16 08:19:47,228|INFO|bf_size: 7790 (973.8 bytes)
+2015-09-16 08:19:47,228|INFO|hash_count: 7
+2015-09-16 08:19:47,228|INFO|Total number of kmers: 770
+2015-09-16 08:19:47,228|INFO|Number of uniq kmers: 705
+2015-09-16 08:19:47,229|INFO|Real false positive rate: 0.00485152506539
+2015-09-16 08:19:47,229|INFO|bf_size: 3900 (487.5 bytes)
+2015-09-16 08:19:47,229|INFO|hash_count: 7
+2015-09-16 08:19:47,230|INFO|Total number of kmers: 398
+2015-09-16 08:19:47,230|INFO|Number of uniq kmers: 397
+2015-09-16 08:19:47,230|INFO|Real false positive rate: 0.00741537542273
+2015-09-16 08:19:47,230|INFO|bf_size: 3890 (486.2 bytes)
+2015-09-16 08:19:47,230|INFO|hash_count: 7
+2015-09-16 08:19:47,230|INFO|Total number of kmers: 383
+2015-09-16 08:19:47,230|INFO|Number of uniq kmers: 382
+2015-09-16 08:19:47,231|INFO|Real false positive rate: 0.00741429031951
+2015-09-16 08:19:47,231|INFO|bf_size: 12047 (1.5 KB)
+2015-09-16 08:19:47,231|INFO|hash_count: 7
+2015-09-16 08:19:47,231|INFO|Total number of kmers: 765
+2015-09-16 08:19:47,231|INFO|Number of uniq kmers: 712
+2015-09-16 08:19:47,232|INFO|Real false positive rate: 0.00526733094236
+2015-09-16 08:19:47,232|INFO|bf_size: 15998 (2.0 KB)
+2015-09-16 08:19:47,232|INFO|hash_count: 7
+2015-09-16 08:19:47,232|INFO|Total number of kmers: 382
+2015-09-16 08:19:47,232|INFO|Number of uniq kmers: 382
+2015-09-16 08:19:47,232|INFO|Real false positive rate: 0.00750758162107
+2015-09-16 08:19:47,232|INFO|bf_size: 3910 (488.8 bytes)
+2015-09-16 08:19:47,232|INFO|hash_count: 7
+2015-09-16 08:19:47,234|INFO|Total number of kmers: 384
+2015-09-16 08:19:47,234|INFO|Number of uniq kmers: 384
+2015-09-16 08:19:47,234|INFO|Real false positive rate: 0.00751098329072
+2015-09-16 08:19:47,234|INFO|bf_size: 8136 (1017.0 bytes)
+2015-09-16 08:19:47,234|INFO|hash_count: 7
+2015-09-16 08:19:47,236|INFO|Total number of kmers: 1183
+2015-09-16 08:19:47,236|INFO|Number of uniq kmers: 1026
+2015-09-16 08:19:47,236|INFO|Real false positive rate: 0.00368430735894
+2015-09-16 08:19:47,236|INFO|bf_size: 3992 (499.0 bytes)
+2015-09-16 08:19:47,236|INFO|hash_count: 7
+2015-09-16 08:19:47,237|INFO|Total number of kmers: 799
+2015-09-16 08:19:47,237|INFO|Number of uniq kmers: 706
+2015-09-16 08:19:47,237|INFO|Real false positive rate: 0.00405386308816
+2015-09-16 08:19:47,238|INFO|bf_size: 4144 (518.0 bytes)
+2015-09-16 08:19:47,238|INFO|hash_count: 7
+2015-09-16 08:19:47,238|INFO|Total number of kmers: 392
+2015-09-16 08:19:47,238|INFO|Number of uniq kmers: 392
+2015-09-16 08:19:47,238|INFO|Real false positive rate: 0.00750592809983
+2015-09-16 08:19:47,238|INFO|bf_size: 7912 (989.0 bytes)
+2015-09-16 08:19:47,238|INFO|hash_count: 7
+2015-09-16 08:19:47,239|INFO|Total number of kmers: 1571
+2015-09-16 08:19:47,239|INFO|Number of uniq kmers: 1359
+2015-09-16 08:19:47,239|INFO|Real false positive rate: 0.00363600151731
+2015-09-16 08:19:47,239|INFO|bf_size: 8085 (1010.6 bytes)
+2015-09-16 08:19:47,239|INFO|hash_count: 7
+2015-09-16 08:19:47,239|INFO|Total number of kmers: 407
+2015-09-16 08:19:47,240|INFO|Number of uniq kmers: 407
+2015-09-16 08:19:47,240|INFO|Real false positive rate: 0.00751241936719
+2015-09-16 08:19:47,240|INFO|bf_size: 3971 (496.4 bytes)
+2015-09-16 08:19:47,240|INFO|hash_count: 7
+2015-09-16 08:19:47,241|INFO|Total number of kmers: 390
+2015-09-16 08:19:47,242|INFO|Number of uniq kmers: 390
+2015-09-16 08:19:47,242|INFO|Real false positive rate: 0.00751177455866
+2015-09-16 08:19:47,242|INFO|bf_size: 3941 (492.6 bytes)
+2015-09-16 08:19:47,242|INFO|hash_count: 7
+2015-09-16 08:19:47,242|INFO|Total number of kmers: 777
+2015-09-16 08:19:47,242|INFO|Number of uniq kmers: 728
+2015-09-16 08:19:47,242|INFO|Real false positive rate: 0.00544600003918
+2015-09-16 08:19:47,242|INFO|bf_size: 4053 (506.6 bytes)
+2015-09-16 08:19:47,242|INFO|hash_count: 7
+2015-09-16 08:19:47,242|INFO|Total number of kmers: 794
+2015-09-16 08:19:47,243|INFO|Number of uniq kmers: 737
+2015-09-16 08:19:47,243|INFO|Real false positive rate: 0.00519768569994
+2015-09-16 08:19:47,243|INFO|bf_size: 4032 (504.0 bytes)
+2015-09-16 08:19:47,243|INFO|hash_count: 7
+2015-09-16 08:19:47,243|INFO|Total number of kmers: 387
+2015-09-16 08:19:47,243|INFO|Number of uniq kmers: 386
+2015-09-16 08:19:47,244|INFO|Real false positive rate: 0.00741275456501
+2015-09-16 08:19:47,244|INFO|bf_size: 46580 (5.7 KB)
+2015-09-16 08:19:47,244|INFO|hash_count: 7
+2015-09-16 08:19:47,244|INFO|Total number of kmers: 398
+2015-09-16 08:19:47,244|INFO|Number of uniq kmers: 398
+2015-09-16 08:19:47,244|INFO|Real false positive rate: 0.0075067790634
+2015-09-16 08:19:47,244|INFO|bf_size: 50430 (6.2 KB)
+2015-09-16 08:19:47,244|INFO|hash_count: 7
+2015-09-16 08:19:47,244|INFO|Total number of kmers: 396
+2015-09-16 08:19:47,245|INFO|Number of uniq kmers: 396
+2015-09-16 08:19:47,245|INFO|Real false positive rate: 0.00751254193858
+2015-09-16 08:19:47,245|INFO|bf_size: 23555 (2.9 KB)
+2015-09-16 08:19:47,245|INFO|hash_count: 7
+2015-09-16 08:19:47,255|INFO|Total number of kmers: 2313
+2015-09-16 08:19:47,255|INFO|Number of uniq kmers: 1690
+2015-09-16 08:19:47,255|INFO|Real false positive rate: 0.00149568890313
+2015-09-16 08:19:47,255|INFO|bf_size: 23025 (2.8 KB)
+2015-09-16 08:19:47,255|INFO|hash_count: 7
+2015-09-16 08:19:47,264|INFO|Total number of kmers: 4574
+2015-09-16 08:19:47,264|INFO|Number of uniq kmers: 2953
+2015-09-16 08:19:47,264|INFO|Real false positive rate: 0.000759476729465
+2015-09-16 08:19:47,264|INFO|bf_size: 11477 (1.4 KB)
+2015-09-16 08:19:47,264|INFO|hash_count: 7
+2015-09-16 08:19:47,265|INFO|Total number of kmers: 2261
+2015-09-16 08:19:47,265|INFO|Number of uniq kmers: 1528
+2015-09-16 08:19:47,265|INFO|Real false positive rate: 0.000978085998171
+2015-09-16 08:19:47,266|INFO|bf_size: 12078 (1.5 KB)
+2015-09-16 08:19:47,266|INFO|hash_count: 7
+2015-09-16 08:19:47,266|INFO|Total number of kmers: 4952
+2015-09-16 08:19:47,266|INFO|Number of uniq kmers: 3408
+2015-09-16 08:19:47,266|INFO|Real false positive rate: 0.00108049833581
+2015-09-16 08:19:47,267|INFO|bf_size: 3971 (496.4 bytes)
+2015-09-16 08:19:47,267|INFO|hash_count: 7
+2015-09-16 08:19:47,268|INFO|Total number of kmers: 390
+2015-09-16 08:19:47,269|INFO|Number of uniq kmers: 390
+2015-09-16 08:19:47,269|INFO|Real false positive rate: 0.00751177455866
+2015-09-16 08:19:47,269|INFO|bf_size: 7505 (938.1 bytes)
+2015-09-16 08:19:47,269|INFO|hash_count: 7
+2015-09-16 08:19:47,269|INFO|Total number of kmers: 1127
+2015-09-16 08:19:47,269|INFO|Number of uniq kmers: 827
+2015-09-16 08:19:47,269|INFO|Real false positive rate: 0.00153102908573
+2015-09-16 08:19:47,270|INFO|bf_size: 3727 (465.9 bytes)
+2015-09-16 08:19:47,270|INFO|hash_count: 7
+2015-09-16 08:19:47,271|INFO|Total number of kmers: 1186
+2015-09-16 08:19:47,271|INFO|Number of uniq kmers: 969
+2015-09-16 08:19:47,271|INFO|Real false positive rate: 0.0027056957945
+2015-09-16 08:19:47,271|INFO|bf_size: 3778 (472.2 bytes)
+2015-09-16 08:19:47,271|INFO|hash_count: 7
+2015-09-16 08:19:47,271|INFO|Total number of kmers: 366
+2015-09-16 08:19:47,271|INFO|Number of uniq kmers: 366
+2015-09-16 08:19:47,271|INFO|Real false positive rate: 0.00750845445819
+2015-09-16 08:19:47,271|INFO|bf_size: 3737 (467.1 bytes)
+2015-09-16 08:19:47,271|INFO|hash_count: 7
+2015-09-16 08:19:47,272|INFO|Total number of kmers: 737
+2015-09-16 08:19:47,272|INFO|Number of uniq kmers: 492
+2015-09-16 08:19:47,272|INFO|Real false positive rate: 0.000914621689767
+2015-09-16 08:19:47,272|INFO|bf_size: 8340 (1.0 KB)
+2015-09-16 08:19:47,272|INFO|hash_count: 7
+2015-09-16 08:19:47,273|INFO|Total number of kmers: 371
+2015-09-16 08:19:47,273|INFO|Number of uniq kmers: 371
+2015-09-16 08:19:47,273|INFO|Real false positive rate: 0.00750756897143
+2015-09-16 08:19:47,273|INFO|bf_size: 4165 (520.6 bytes)
+2015-09-16 08:19:47,273|INFO|hash_count: 7
+2015-09-16 08:19:47,273|INFO|Total number of kmers: 367
+2015-09-16 08:19:47,273|INFO|Number of uniq kmers: 367
+2015-09-16 08:19:47,273|INFO|Real false positive rate: 0.00751023171568
+2015-09-16 08:19:47,273|INFO|bf_size: 4175 (521.9 bytes)
+2015-09-16 08:19:47,273|INFO|hash_count: 7
+2015-09-16 08:19:47,275|INFO|Total number of kmers: 409
+2015-09-16 08:19:47,275|INFO|Number of uniq kmers: 409
+2015-09-16 08:19:47,275|INFO|Real false positive rate: 0.00750681212057
+2015-09-16 08:19:47,275|INFO|bf_size: 11487 (1.4 KB)
+2015-09-16 08:19:47,275|INFO|hash_count: 7
+2015-09-16 08:19:47,275|INFO|Total number of kmers: 410
+2015-09-16 08:19:47,275|INFO|Number of uniq kmers: 409
+2015-09-16 08:19:47,275|INFO|Real false positive rate: 0.00741964904191
+2015-09-16 08:19:47,275|INFO|bf_size: 11538 (1.4 KB)
+2015-09-16 08:19:47,275|INFO|hash_count: 7
+2015-09-16 08:19:47,276|INFO|Total number of kmers: 819
+2015-09-16 08:19:47,276|INFO|Number of uniq kmers: 668
+2015-09-16 08:19:47,276|INFO|Real false positive rate: 0.00268270085557
+2015-09-16 08:19:47,276|INFO|bf_size: 3849 (481.1 bytes)
+2015-09-16 08:19:47,276|INFO|hash_count: 7
+2015-09-16 08:19:47,278|INFO|Total number of kmers: 378
+2015-09-16 08:19:47,278|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,278|INFO|Real false positive rate: 0.00741390947263
+2015-09-16 08:19:47,278|INFO|bf_size: 7637 (954.6 bytes)
+2015-09-16 08:19:47,278|INFO|hash_count: 7
+2015-09-16 08:19:47,280|INFO|Total number of kmers: 1128
+2015-09-16 08:19:47,280|INFO|Number of uniq kmers: 924
+2015-09-16 08:19:47,280|INFO|Real false positive rate: 0.00274290927397
+2015-09-16 08:19:47,280|INFO|bf_size: 3869 (483.6 bytes)
+2015-09-16 08:19:47,280|INFO|hash_count: 7
+2015-09-16 08:19:47,281|INFO|Total number of kmers: 1133
+2015-09-16 08:19:47,281|INFO|Number of uniq kmers: 774
+2015-09-16 08:19:47,281|INFO|Real false positive rate: 0.00103793051874
+2015-09-16 08:19:47,281|INFO|bf_size: 3768 (471.0 bytes)
+2015-09-16 08:19:47,281|INFO|hash_count: 7
+2015-09-16 08:19:47,282|INFO|Total number of kmers: 750
+2015-09-16 08:19:47,282|INFO|Number of uniq kmers: 643
+2015-09-16 08:19:47,282|INFO|Real false positive rate: 0.00347428403595
+2015-09-16 08:19:47,282|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,282|INFO|hash_count: 7
+2015-09-16 08:19:47,282|INFO|Total number of kmers: 380
+2015-09-16 08:19:47,282|INFO|Number of uniq kmers: 379
+2015-09-16 08:19:47,282|INFO|Real false positive rate: 0.00741779870669
+2015-09-16 08:19:47,282|INFO|bf_size: 7698 (962.2 bytes)
+2015-09-16 08:19:47,282|INFO|hash_count: 7
+2015-09-16 08:19:47,282|INFO|Total number of kmers: 370
+2015-09-16 08:19:47,282|INFO|Number of uniq kmers: 370
+2015-09-16 08:19:47,282|INFO|Real false positive rate: 0.00750580443405
+2015-09-16 08:19:47,283|INFO|bf_size: 3859 (482.4 bytes)
+2015-09-16 08:19:47,283|INFO|hash_count: 7
+2015-09-16 08:19:47,283|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,284|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,284|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,284|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,284|INFO|hash_count: 7
+2015-09-16 08:19:47,284|INFO|Total number of kmers: 379
+2015-09-16 08:19:47,284|INFO|Number of uniq kmers: 378
+2015-09-16 08:19:47,284|INFO|Real false positive rate: 0.00741585894683
+2015-09-16 08:19:47,284|INFO|bf_size: 22781 (2.8 KB)
+2015-09-16 08:19:47,285|INFO|hash_count: 7
+2015-09-16 08:19:47,285|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,285|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,285|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,286|INFO|bf_size: 27649 (3.4 KB)
+2015-09-16 08:19:47,286|INFO|hash_count: 7
+2015-09-16 08:19:47,286|INFO|Total number of kmers: 756
+2015-09-16 08:19:47,286|INFO|Number of uniq kmers: 552
+2015-09-16 08:19:47,286|INFO|Real false positive rate: 0.00149154777957
+2015-09-16 08:19:47,286|INFO|bf_size: 11538 (1.4 KB)
+2015-09-16 08:19:47,286|INFO|hash_count: 7
+2015-09-16 08:19:47,291|INFO|Total number of kmers: 1133
+2015-09-16 08:19:47,291|INFO|Number of uniq kmers: 955
+2015-09-16 08:19:47,291|INFO|Real false positive rate: 0.00318131476045
+2015-09-16 08:19:47,291|INFO|bf_size: 11242 (1.4 KB)
+2015-09-16 08:19:47,291|INFO|hash_count: 7
+2015-09-16 08:19:47,294|INFO|Total number of kmers: 2237
+2015-09-16 08:19:47,294|INFO|Number of uniq kmers: 1388
+2015-09-16 08:19:47,294|INFO|Real false positive rate: 0.00060838156166
+2015-09-16 08:19:47,294|INFO|bf_size: 3839 (479.9 bytes)
+2015-09-16 08:19:47,294|INFO|hash_count: 7
+2015-09-16 08:19:47,296|INFO|Total number of kmers: 1104
+2015-09-16 08:19:47,296|INFO|Number of uniq kmers: 709
+2015-09-16 08:19:47,296|INFO|Real false positive rate: 0.000737925488273
+2015-09-16 08:19:47,296|INFO|Total number of kmers: 377
+2015-09-16 08:19:47,296|INFO|bf_size: 7698 (962.2 bytes)
+2015-09-16 08:19:47,296|INFO|Number of uniq kmers: 377
+2015-09-16 08:19:47,296|INFO|hash_count: 7
+2015-09-16 08:19:47,296|INFO|Real false positive rate: 0.00750844143894
+2015-09-16 08:19:47,296|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,296|INFO|hash_count: 7
+2015-09-16 08:19:47,298|INFO|Total number of kmers: 2715
+2015-09-16 08:19:47,298|INFO|Number of uniq kmers: 2173
+2015-09-16 08:19:47,298|INFO|Real false positive rate: 0.00242879962992
+2015-09-16 08:19:47,298|INFO|bf_size: 3747 (468.4 bytes)
+2015-09-16 08:19:47,298|INFO|hash_count: 7
+2015-09-16 08:19:47,298|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,298|INFO|Number of uniq kmers: 388
+2015-09-16 08:19:47,298|INFO|Real false positive rate: 0.00750842915824
+2015-09-16 08:19:47,298|INFO|bf_size: 3747 (468.4 bytes)
+2015-09-16 08:19:47,298|INFO|hash_count: 7
+2015-09-16 08:19:47,300|INFO|Total number of kmers: 756
+2015-09-16 08:19:47,300|INFO|Number of uniq kmers: 695
+2015-09-16 08:19:47,300|INFO|Real false positive rate: 0.00495299847897
+2015-09-16 08:19:47,300|INFO|bf_size: 7495 (936.9 bytes)
+2015-09-16 08:19:47,300|INFO|Total number of kmers: 368
+2015-09-16 08:19:47,300|INFO|hash_count: 7
+2015-09-16 08:19:47,300|INFO|Number of uniq kmers: 367
+2015-09-16 08:19:47,300|INFO|Real false positive rate: 0.00741311671788
+2015-09-16 08:19:47,300|INFO|bf_size: 3737 (467.1 bytes)
+2015-09-16 08:19:47,300|INFO|hash_count: 7
+2015-09-16 08:19:47,300|INFO|Total number of kmers: 368
+2015-09-16 08:19:47,300|INFO|Number of uniq kmers: 367
+2015-09-16 08:19:47,300|INFO|Real false positive rate: 0.00741311671788
+2015-09-16 08:19:47,300|INFO|bf_size: 3757 (469.6 bytes)
+2015-09-16 08:19:47,300|INFO|hash_count: 7
+2015-09-16 08:19:47,302|INFO|Total number of kmers: 367
+2015-09-16 08:19:47,302|INFO|Number of uniq kmers: 366
+2015-09-16 08:19:47,302|INFO|Real false positive rate: 0.00741110201005
+2015-09-16 08:19:47,302|INFO|bf_size: 11935 (1.5 KB)
+2015-09-16 08:19:47,302|INFO|hash_count: 7
+2015-09-16 08:19:47,302|INFO|Total number of kmers: 369
+2015-09-16 08:19:47,302|INFO|Number of uniq kmers: 369
+2015-09-16 08:19:47,302|INFO|Real false positive rate: 0.00751375873518
+2015-09-16 08:19:47,302|INFO|bf_size: 15713 (1.9 KB)
+2015-09-16 08:19:47,302|INFO|hash_count: 7
+2015-09-16 08:19:47,303|INFO|Total number of kmers: 736
+2015-09-16 08:19:47,303|INFO|Number of uniq kmers: 536
+2015-09-16 08:19:47,303|INFO|Real false positive rate: 0.00147009033167
+2015-09-16 08:19:47,303|INFO|bf_size: 3910 (488.8 bytes)
+2015-09-16 08:19:47,303|INFO|hash_count: 7
+2015-09-16 08:19:47,305|INFO|Total number of kmers: 384
+2015-09-16 08:19:47,305|INFO|Number of uniq kmers: 383
+2015-09-16 08:19:47,305|INFO|Real false positive rate: 0.00741621345665
+2015-09-16 08:19:47,305|INFO|bf_size: 8024 (1003.0 bytes)
+2015-09-16 08:19:47,305|INFO|hash_count: 7
+2015-09-16 08:19:47,307|INFO|Total number of kmers: 1172
+2015-09-16 08:19:47,307|INFO|Number of uniq kmers: 966
+2015-09-16 08:19:47,307|INFO|Real false positive rate: 0.00283279001385
+2015-09-16 08:19:47,307|INFO|bf_size: 4134 (516.8 bytes)
+2015-09-16 08:19:47,307|INFO|hash_count: 7
+2015-09-16 08:19:47,309|INFO|Total number of kmers: 788
+2015-09-16 08:19:47,309|INFO|Number of uniq kmers: 705
+2015-09-16 08:19:47,309|INFO|Real false positive rate: 0.00431827640183
+2015-09-16 08:19:47,309|INFO|bf_size: 3890 (486.2 bytes)
+2015-09-16 08:19:47,309|INFO|hash_count: 7
+2015-09-16 08:19:47,309|INFO|Total number of kmers: 1543
+2015-09-16 08:19:47,309|INFO|Number of uniq kmers: 1329
+2015-09-16 08:19:47,309|INFO|Real false positive rate: 0.00355586540927
+2015-09-16 08:19:47,309|INFO|bf_size: 7780 (972.5 bytes)
+2015-09-16 08:19:47,309|INFO|hash_count: 7
+2015-09-16 08:19:47,309|INFO|Total number of kmers: 406
+2015-09-16 08:19:47,309|INFO|Number of uniq kmers: 404
+2015-09-16 08:19:47,309|INFO|Real false positive rate: 0.0073322816656
+2015-09-16 08:19:47,309|INFO|bf_size: 7933 (991.6 bytes)
+2015-09-16 08:19:47,309|INFO|hash_count: 7
+2015-09-16 08:19:47,311|INFO|Total number of kmers: 382
+2015-09-16 08:19:47,311|INFO|Number of uniq kmers: 382
+2015-09-16 08:19:47,311|INFO|Real false positive rate: 0.00750758162107
+2015-09-16 08:19:47,311|INFO|bf_size: 3951 (493.9 bytes)
+2015-09-16 08:19:47,311|INFO|hash_count: 7
+2015-09-16 08:19:47,312|INFO|Total number of kmers: 388
+2015-09-16 08:19:47,312|INFO|Total number of kmers: 764
+2015-09-16 08:19:47,313|INFO|Number of uniq kmers: 388
+2015-09-16 08:19:47,313|INFO|Number of uniq kmers: 731
+2015-09-16 08:19:47,313|INFO|Real false positive rate: 0.00750842915824
+2015-09-16 08:19:47,313|INFO|Real false positive rate: 0.00604289935565
+2015-09-16 08:19:47,313|INFO|bf_size: 3829 (478.6 bytes)
+2015-09-16 08:19:47,313|INFO|bf_size: 3910 (488.8 bytes)
+2015-09-16 08:19:47,313|INFO|hash_count: 7
+2015-09-16 08:19:47,313|INFO|hash_count: 7
+2015-09-16 08:19:47,313|INFO|Total number of kmers: 779
+2015-09-16 08:19:47,313|INFO|Number of uniq kmers: 735
+2015-09-16 08:19:47,313|INFO|Real false positive rate: 0.00563690102484
+2015-09-16 08:19:47,313|INFO|bf_size: 4022 (502.8 bytes)
+2015-09-16 08:19:47,313|INFO|hash_count: 7
+2015-09-16 08:19:47,314|INFO|Total number of kmers: 376
+2015-09-16 08:19:47,314|INFO|Number of uniq kmers: 375
+2015-09-16 08:19:47,314|INFO|Real false positive rate: 0.00740998108808
+2015-09-16 08:19:47,314|INFO|Total number of kmers: 384
+2015-09-16 08:19:47,314|INFO|Number of uniq kmers: 383
+2015-09-16 08:19:47,314|INFO|db_count: 0: waiting 1s for queue to be non-empty
+2015-09-16 08:19:47,314|INFO|Real false positive rate: 0.00741621345665
+2015-09-16 08:19:47,315|INFO|db_count: 2: waiting 1s for queue to be non-empty
+2015-09-16 08:19:47,315|INFO|Total number of kmers: 395
+2015-09-16 08:19:47,315|INFO|Number of uniq kmers: 395
+2015-09-16 08:19:47,315|INFO|Real false positive rate: 0.00751090042451
+2015-09-16 08:19:47,315|INFO|db_count: 1: waiting 1s for queue to be non-empty
+2015-09-16 08:19:48,316|INFO|db_count: 0: waiting 2s for queue to be non-empty
+2015-09-16 08:19:48,316|INFO|db_count: 2: waiting 2s for queue to be non-empty
+2015-09-16 08:19:48,316|INFO|db_count: 1: waiting 2s for queue to be non-empty
+2015-09-16 08:19:50,318|INFO|db_count: 2: waiting 3s for queue to be non-empty
+2015-09-16 08:19:50,318|INFO|db_count: 1: waiting 3s for queue to be non-empty
+2015-09-16 08:19:53,321|INFO|db_count: 0: still empty after 6.0s wait for the queue, break the while loop
+2015-09-16 08:19:53,322|INFO|db_count: 1: still empty after 6.0s wait for the queue, break the while loop
